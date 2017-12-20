@@ -10,7 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170423144447) do
+ActiveRecord::Schema.define(version: 20171220210833) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "delayed_jobs", force: :cascade do |t|
     t.integer  "priority",   default: 0, null: false
@@ -24,7 +27,7 @@ ActiveRecord::Schema.define(version: 20170423144447) do
     t.string   "queue"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.index ["priority", "run_at"], name: "delayed_jobs_priority"
+    t.index ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
   end
 
   create_table "items", force: :cascade do |t|
@@ -35,6 +38,16 @@ ActiveRecord::Schema.define(version: 20170423144447) do
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
     t.integer  "remaining_quantity"
+    t.string   "marca"
+    t.string   "modelo"
+    t.string   "serial"
+    t.string   "mantenimiento"
+    t.string   "num_manten_year"
+    t.string   "regulador"
+    t.string   "monitoreo"
+    t.integer  "tipo_id"
+    t.string   "volumen"
+    t.string   "num_paquetes"
   end
 
   create_table "members", force: :cascade do |t|
@@ -53,8 +66,8 @@ ActiveRecord::Schema.define(version: 20170423144447) do
     t.integer  "member_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["item_id"], name: "index_orders_on_item_id"
-    t.index ["member_id"], name: "index_orders_on_member_id"
+    t.index ["item_id"], name: "index_orders_on_item_id", using: :btree
+    t.index ["member_id"], name: "index_orders_on_member_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -71,8 +84,10 @@ ActiveRecord::Schema.define(version: 20170423144447) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "orders", "items"
+  add_foreign_key "orders", "members"
 end
