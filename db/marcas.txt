@@ -1,0 +1,167 @@
+INDUFRIAL|Refrigerador/Congelador
+ELECTROLUZ|Refrigerador/Congelador
+HACEB|Refrigerador/Congelador
+VESTFROST|Refrigerador/Congelador
+UNICEF|Refrigerador/Congelador
+ELECTROLUX|Refrigerador/Congelador
+MABE|Refrigerador/Congelador
+ABBA|Refrigerador/Congelador
+GREENLINE|Refrigerador/Congelador
+CHALLENGER|Refrigerador/Congelador
+LG|Refrigerador/Congelador
+CASTELL|Refrigerador/Congelador
+ULTRALAB|Refrigerador/Congelador
+WHIRPOOL|Refrigerador/Congelador
+VITRA-LAB|Refrigerador/Congelador
+HAIER|Refrigerador/Congelador
+REFRIMAC|Refrigerador/Congelador
+SUPER NORDICO|Refrigerador/Congelador
+JOTAMARCOR|Refrigerador/Congelador
+IMBERA|Refrigerador/Congelador
+INDUSTRIAL|Refrigerador/Congelador
+SCALPEL|Refrigerador/Congelador
+WONDEL COOL|Refrigerador/Congelador
+ICASA|Refrigerador/Congelador
+ICE-LINED|Refrigerador/Congelador
+DENMARK|Refrigerador/Congelador
+PHILLIPS|Refrigerador/Congelador
+IBG|Refrigerador/Congelador
+GASTELL|Refrigerador/Congelador
+JLC|Refrigerador/Congelador
+DOMETIC|Refrigerador/Congelador
+KING SEELEY|Termo
+NILKAMAL|Termo
+AOV |Termo
+STORAGE 1.6 LTR STEP|Termo
+VACCINE CARRIER|Termo
+Colombo Smart Plastic S.p.A |Termo
+HELP|Termo
+APEX|Termo
+BLOW KINGS|Termo
+APEX |Termo
+COLEMAN|Termo
+THERMOSAFE|Caja
+NILKAMAL|Caja
+AOV International|Caja
+FRIGIVAC|Caja
+DOMETIC|Caja
+APEX|Caja
+COLEMAN|Caja
+CIP INDUSTRIES|Caja
+COLD BOX|Caja
+CAJA FRIA CIP INDUSTRIES|Caja
+CHERMOSAFE|Caja
+ADEMCO|Caja
+SD|Caja
+AMHIGO|Caja
+LENNOS|Aire acondicionado
+LG|Aire acondicionado
+SAMSUNG|Aire acondicionado
+GENERAL ELECTRI|Aire acondicionado
+HACEB|Aire acondicionado
+SIGMA|Aire acondicionado
+MIRAGE|Aire acondicionado
+CONFORTFRESH|Aire acondicionado
+INNOVAIR VEXUS|Aire acondicionado
+KALLEY|Aire acondicionado
+CONFORT STILE|Aire acondicionado
+ELECTROLUX|Aire acondicionado
+STARLIGTH|Aire acondicionado
+CARRIER|Aire acondicionado
+CONFORT FREST|Aire acondicionado
+BLUE LINE|Aire acondicionado
+CONFORT FRESH |Aire acondicionado
+TECAM|Aire acondicionado
+STARTLIGTH|Aire acondicionado
+YORK CARRIER|Aire acondicionado
+L.G.|Aire acondicionado
+TEMPSTAR|Aire acondicionado
+BLUELINE|Aire acondicionado
+HYUNDAI|Aire acondicionado
+LENNOX|Aire acondicionado
+PANASONIC|Aire acondicionado
+YORK|Aire acondicionado
+YORK TRAIN|Aire acondicionado
+TRANS V2 SHILER|Aire acondicionado
+CONFORFREST|Aire acondicionado
+GODMAN|Aire acondicionado
+STARLIGH|Aire acondicionado
+AIRCONFORT|Aire acondicionado
+LENOX|Aire acondicionado
+WIRPOOL|Aire acondicionado
+COMFOR |Aire acondicionado
+FAN CORL|Aire acondicionado
+STAR LIGHT|Aire acondicionado
+LG GOLD|Aire acondicionado
+COOLTECH|Aire acondicionado
+OLG|Aire acondicionado
+OLIMPO|Aire acondicionado
+KOMFORNET|Aire acondicionado
+WESTINGHOUSE|Aire acondicionado
+DE VENTANA|Aire acondicionado
+BOSCH|Aire acondicionado
+HYUNDAI |Aire acondicionado
+TRANE|Aire acondicionado
+CIAT|Aire acondicionado
+EQUIPAC- CARRIEL|Aire acondicionado
+STAR LIGTH|Aire acondicionado
+AIRE EN RED|Aire acondicionado
+SYMPLY|Aire acondicionado
+MITSUBITSHI|Aire acondicionado
+SAMSUMG|Aire acondicionado
+MINI SLIPT|Aire acondicionado
+SINCRON|Termometro
+THERMOMETER--TAYLOR|Termometro
+CE|Termometro
+TAYLOR|Termometro
+HYGROMETER|Termometro
+K.E.X.|Termometro
+HALTHEN|Termometro
+HYGRO-THERMOMETER|Termometro
+K.I.J.|Termometro
+EXTECH|Termometro
+CENTRAL COMPANY|Termometro
+SANOFI PASTEUR|Termometro
+TVN-18|Termometro
+TERMOHIGROMETRO|Termometro
+CLEAR TERMOMETRO|Termometro
+TEMPERATURE|Termometro
+K.T.J.|Termometro
+HIGRO-THERMOMETER|Termometro
+SATELITAL|Termometro
+TERMOMETRO|Termometro
+FRIDGE|Termometro
+FRIGGE/FREEZER|Termometro
+THERMOMETROS|Termometro
+KEX GERMANY|Termometro
+DOMETIC|Termometro
+KPJ|Termometro
+THERMO HYGROMETER|Termometro
+BIO TEMP|Termometro
+KEX|Termometro
+HTC-2|Termometro
+TAYLOR Y DARTIKO|Termometro
+NETUX|Termometro
+FREDEE/FREEZER|Termometro
+THERMOHYGRO|Termometro
+OWAY|Termometro
+TAYLOR   |Termometro
+BIOTEMP|Termometro
+KEX RT 803 E|Termometro
+MEDICAL SA|Termometro
+CONTROL COMPANY|Termometro
+HTC 2|Termometro
+HUMIDITY|Termometro
+ALLA FRANCE|Termometro
+SITRAD|Termometro
+BIOMETROMED S.A.S|Termometro
+HYGRO|Termometro
+COMPACT HYGRO-THERMOMETER|Termometro
+KEN GERMANY|Termometro
+BRIXCO|Termometro
+INTEGRAL JC.S.A.S|Termometro
+FRIDG FREEZER|Termometro
+VACFT17|Termometro
+DIGITAL THERMOMETER|Termometro
+CE-TAILOR|Termometro
+TERMOMETRO DIGITAL RX-1|Termometro

@@ -1,0 +1,5 @@
+Refrigerador/Congelador|
+Termo|
+Caja|
+Aire acondicionado|
+Termometro|

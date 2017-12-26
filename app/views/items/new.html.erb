@@ -6,15 +6,15 @@
       <!-- Content Header (Page header) -->
       <section class="content-header">
         <h1>
-          Add Item
+          Agregar Item
         </h1>
         <ol class="breadcrumb">
           <li>
             <a href="#">
               <i class="fa fa-home"></i>
-              Home Page</a>
+              Home </a>
           </li>
-          <li class="active">Add Item</li>
+          <li class="active">Agregar Item</li>
         </ol>
       </section>
 
@@ -26,7 +26,7 @@
             <!-- general form elements -->
             <div class="box box-header">
               <div class="box-header with-border">
-                <h3 class="box-title">Basic Information</h3>
+                <h3 class="box-title">Información básica</h3>
               </div>
               <!-- /.box-header -->
               <!-- form start -->
@@ -44,25 +44,56 @@
               <% end %>
               <div class="box-body">
                 <div class="form-group">
-                  <label>Name</label>
+                  <label>Categoría</label>
+                <!--  <%= f.select(:category, [["Refrigerador/Congelador","Refrigerador/Congelador"], ["Termo","Termo"], ["Caja","Caja"], ["Aire acondicionado","Aire"], ["Termometro","Termometro"]], {}, { :class => 'form-control' })%> -->
+                  <%= f.collection_select(:category, Category.all, :id, :nombre, :prompt => "Seleccione...") %>
+                </div>
+                <div class="form-group">
+                  <label>Marca</label>
+                  <!-- <%= f.text_field :marca, class: "form-control", placeholder: "Ingrese Marca", required: true  %> -->
+                  <%= f.select(:marca,[["Seleccione","0"]],{},{ :class => 'form-control' }) %>
+                </div>
+                <div class="form-group">
+                  <label>Modelo</label>
+                  <!--<%= f.text_field :modelo, class: "form-control", placeholder: "Ingrese Modelo", required: true  %> -->
+                  <%= f.select(:modelo,[["Seleccione","0"]],{},{ :class => 'form-control' }) %>
+                </div>
+                <div class="form-group">
+                  <label>Serial</label>
+                  <%= f.text_field :serial, class: "form-control", placeholder: "Ingrese Serie", required: true  %>
+                </div>
+                <div class="form-group">
+                  <label>¿Cuenta con Mantenimiento?</label>
+
+                  <%= f.select(:mantenimiento, [["Si","Si"], ["No","No"]], {}, { :class => 'form-control' })%>
+                </div>
+                <div class="form-group">
+                  <label>Numero Mantenimientos al año</label>
+                  <%= f.text_field :num_manten_year, class: "form-control", placeholder: "Ingrese numero mantenimientos", required: true  %>
+                </div>
+                <div class="form-group">
+                  <label>¿Tiene regulador?</label>
+
+                  <%= f.select(:regulador, [["Si","Si"], ["No","No"]], {}, { :class => 'form-control' })%>
+                </div>
+                <!--<div class="form-group">
+                  <label>Nombre</label>
                   <%= f.text_field :name, class: "form-control", placeholder: "Enter Name", required: true  %>
                 </div>
                 <div class="form-group">
-                  <label>Description</label>
+                  <label>Descripción</label>
                   <%= f.text_area :description, class: "form-control", rows: "3", laceholder: "Enter Description"%>
                 </div>
+              -->
                 <div class="form-group">
-                  <label>Quantity</label>
-                  <%= f.number_field :quantity, class: "form-control", placeholder: "Enter Quantity", required: true  %>
+                  <label>Cantidad</label>
+                  <%= f.number_field :quantity, class: "form-control", placeholder: "Ingrese Cantidad", required: true  %>
                 </div>
-                <div class="form-group">
-                  <label>Category</label>
-                  <%= f.select(:category, [["Books","Books"], ["Magazines","Magazines"], ["Electronics","Electronics"], ["Hardware","Hardware"], ["Tools","Tools"]], {}, { :class => 'form-control' })%>
-                </div>
+
               </div>
               <!-- /.box-body -->
               <div class="box-footer">
-                <%= f.submit "Submit", class: "btn btn-primary"%>
+                <%= f.submit "Aceptar", class: "btn btn-primary"%>
               </div>
               <% end %>
             </div>
@@ -78,14 +109,78 @@
     <footer class="main-footer">
       <div class="pull-right hidden-xs">
         <b>Version</b>
-        0.1
+        0.9
       </div>
-      Content available under
-      <a href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0</a>.
+      Inventario del
+      <a href="http://www.saludinfantilvalledelcauca.co/">PAI Valle del Cauca</a>.
     </footer>
     <!-- ./wrapper -->
     <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
     <script>
       $.widget.bridge('uibutton', $.ui.button);
+    </script>
+    <script>
+    jQuery(function($) {
+      //trae marcas asociadas a categorias
+      $("#item_category").change(function() {
+
+        mandando = JSON.stringify({categoria:$("#item_category").val()})
+
+        $.ajax({
+              type: "POST",// GET in place of POST
+              contentType: "application/json; charset=utf-8",
+              url: "/items/getMarcas/",
+              data : mandando,
+              dataType: "json",
+              success: function (result) {
+                  var marcas = result
+                  for (var i = 0; i < marcas.length; i++) {
+                    $("#item_marca").append($('<option>', {
+                              value: marcas[i].id,
+                              text:  marcas[i].nombre
+                    }))
+
+                  }
+              },
+              error: function (){
+                  window.alert("El servidor no responde");
+              }
+          });
+      });
+
+
+// trae modelos asociados a marcas
+      $("#item_marca").change(function() {
+
+        mandando = JSON.stringify({categoria:$("#item_category").val(),marca:$("#item_marca").val()})
+
+        $.ajax({
+              type: "POST",// GET in place of POST
+              contentType: "application/json; charset=utf-8",
+              url: "/items/getModelos/",
+              data : mandando,
+              dataType: "json",
+              success: function (result) {
+                  var modelos = result
+                  for (var i = 0; i < modelos.length; i++) {
+                    $("#item_modelo").append($('<option>', {
+                              value: modelos[i].id,
+                              text:  modelos[i].nombre
+                    }))
+
+                  }
+              },
+              error: function (){
+                  window.alert("El servidor no responde");
+              }
+          });
+      });
+
+
+
+
+
+
+    });
     </script>
   </body>

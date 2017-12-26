@@ -1,0 +1,2 @@
+class Municipio < ApplicationRecord
+end

@@ -6,15 +6,15 @@
       <!-- Content Header (Page header) -->
       <section class="content-header">
         <h1>
-          Edit Item
+          Editar Item
         </h1>
         <ol class="breadcrumb">
           <li>
             <a href="#">
               <i class="fa fa-home"></i>
-              Home Page</a>
+              Home </a>
           </li>
-          <li class="active">Edit Item</li>
+          <li class="active">Editar Item</li>
         </ol>
       </section>
 
@@ -26,7 +26,7 @@
             <!-- general form elements -->
             <div class="box box-header">
               <div class="box-header with-border">
-                <h3 class="box-title">Basic Information</h3>
+                <h3 class="box-title">Información básica</h3>
               </div>
               <!-- /.box-header -->
               <!-- form start -->
@@ -44,32 +44,41 @@
               <% end %>
               <div class="box-body">
                 <div class="form-group">
-                  <label>Name</label>
-                  <%= f.text_field :name, class: "form-control", placeholder: "Enter Full Name", required: true %>
+                  <label>Categoría</label>
+                  <%= f.select(:category, [["Refrigerador/Congelador","Refrigerador/Congelador"], ["Termo","Termo"], ["Caja","Caja"], ["Aire acondicionado","Aire"], ["Termometro","Termometro"]], {}, { :class => 'form-control' })%>
                 </div>
                 <div class="form-group">
-                  <label>Description</label>
+                  <label>Marca</label>
+                  <%= f.text_field :marca, class: "form-control", placeholder: "Ingrese Marca", required: true  %>
+                </div>
+                <div class="form-group">
+                  <label>Modelo</label>
+                  <%= f.text_field :modelo, class: "form-control", placeholder: "Ingrese Modelo", required: true  %>
+                </div>
+                <div class="form-group">
+                  <label>Serial</label>
+                  <%= f.text_field :serial, class: "form-control", placeholder: "Ingrese Serie", required: true  %>
+                </div>
+                <!--<div class="form-group">
+                  <label>Nombre</label>
+                  <%= f.text_field :name, class: "form-control", placeholder: "Enter Name", required: true  %>
+                </div>
+                <div class="form-group">
+                  <label>Descripción</label>
                   <%= f.text_area :description, class: "form-control", rows: "3", laceholder: "Enter Description"%>
                 </div>
+              -->
                 <div class="form-group">
-                  <label>Quantity</label>
-                  <%= f.number_field :quantity, class: "form-control", placeholder: "Enter Quantity", required: true  %>
+                  <label>Cantidad</label>
+                  <%= f.number_field :quantity, class: "form-control", placeholder: "Ingrese Cantidad", required: true  %>
                 </div>
-                <div class="form-group">
-                  <label>Remaining Quantity</label>
-                  <%= f.number_field :remaining_quantity, class: "form-control", placeholder: "Enter Quantity", required: true  %>
-                </div>
-                <div class="form-group">
-                  <label>Category</label>
-                  <%= f.select(:category, [["Books","Books"], ["Magazines","Magazines"], ["Electronics","Electronics"], ["Hardware","Hardware"], ["Tools","Tools"]], {}, { :class => 'form-control' })%>
-                </div>
+
               </div>
               <!-- /.box-body -->
               <div class="box-footer">
-                <%= f.submit "Submit", class: "btn btn-primary"%>
+                <%= f.submit "Aceptar", class: "btn btn-primary"%>
               </div>
               <% end %>
-
             </div>
             <!-- /.box -->
           </div>
@@ -83,10 +92,10 @@
     <footer class="main-footer">
       <div class="pull-right hidden-xs">
         <b>Version</b>
-        0.1
+        0.9
       </div>
-      Content available under
-      <a href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0</a>.
+      Inventario del
+      <a href="http://www.saludinfantilvalledelcauca.co/">PAI Valle del Cauca</a>.
     </footer>
     <!-- ./wrapper -->
     <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->

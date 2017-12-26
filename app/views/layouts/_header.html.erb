@@ -6,7 +6,7 @@
       <b>f</b>inv</span>
     <!-- logo for regular state and mobile devices -->
     <span class="logo-lg">
-      <b>fossaegean</b>
+      <b>Inventario Físico PAI</b>
     </span>
   </a>
   <!-- Header Navbar: style can be found in header.less -->
@@ -14,6 +14,7 @@
     <!-- Sidebar toggle button-->
     <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
       <span class="sr-only">Toggle navigation</span>
+      <%= Institucion.find(current_user.institucion_id).name%>
     </a>
   </nav>
 </header>
@@ -30,17 +31,17 @@
         <p><%= current_user.name %></p>
         <a href="<%= edit_user_path(current_user.id) %>">
           <i class="fa fa-edit"></i>
-          Edit Profile</a>
+          Editar Perfil</a>
         <a href="">
           <%= link_to destroy_user_session_path, method: :delete  do %>
-          <i class="fa fa-sign-out"></i>Log Out
+          <i class="fa fa-sign-out"></i>Salir
         <% end %>
         </a>
       </div>
     </div>
     <!-- sidebar menu: : style can be found in sidebar.less -->
     <ul class="sidebar-menu">
-      <li class="header">MAIN NAVIGATION</li>
+      <li class="header">Menu principal</li>
       <li>
         <a href="<%= root_url %>">
           <i class="fa fa-home"></i>
@@ -50,25 +51,25 @@
       <li>
         <a href="<%= items_path %>">
           <i class="fa fa-search"></i>
-          <span>Check Inventory</span>
+          <span>Inventario</span>
         </a>
       </li>
       <li>
         <a href="<%= past_orders_path %>">
           <i class="fa fa-history"></i>
-          <span>Past Orders</span>
+          <span>Solicitudes</span>
         </a>
       </li>
       <li>
         <a href=" <%= new_item_path %>">
           <i class="fa fa-plus"></i>
-          <span>Add Item</span>
+          <span>Agregar Item</span>
         </a>
       </li>
       <li>
         <a href="<%= new_member_path %>">
           <i class="fa fa-user-plus"></i>
-          <span>Add Member</span>
+          <span>Agregar Member</span>
         </a>
       </li>
     </ul>
