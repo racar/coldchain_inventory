@@ -1,5 +1,11 @@
+Refrigerador|
+Congelador|
+Nevera|
 Refrigerador/Congelador|
+Refrigerador Vertical|
 Termo|
 Caja|
 Aire acondicionado|
+Planta Electrica|
 Termometro|
+Cuarto Frio|

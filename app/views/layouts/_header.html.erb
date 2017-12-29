@@ -49,6 +49,12 @@
         </a>
       </li>
       <li>
+        <a href="<%= edit_institucion_path(current_user.institucion_id) %>">
+          <i class="fa fa-search"></i>
+          <span>Entidad</span>
+        </a>
+      </li>
+      <li>
         <a href="<%= items_path %>">
           <i class="fa fa-search"></i>
           <span>Inventario</span>
@@ -66,12 +72,12 @@
           <span>Agregar Item</span>
         </a>
       </li>
-      <li>
+    <!--  <li>
         <a href="<%= new_member_path %>">
           <i class="fa fa-user-plus"></i>
           <span>Agregar Member</span>
         </a>
-      </li>
+      </li> -->
     </ul>
   </section>
   <!-- /.sidebar -->

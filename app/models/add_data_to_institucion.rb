@@ -1,0 +1,2 @@
+class AddDataToInstitucion < ApplicationRecord
+end

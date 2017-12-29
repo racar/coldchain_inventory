@@ -5,11 +5,11 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Edit Profile
+        Editar Perfil
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-home"></i> Home Page</a></li>
-        <li class="active">Edit Profile</li>
+        <li class="active">Editar Perfil</li>
       </ol>
     </section>
 
@@ -21,7 +21,7 @@
           <!-- general form elements -->
           <div class="box box-header">
             <div class="box-header with-border">
-              <h3 class="box-title">Basic Information</h3>
+              <h3 class="box-title">Informacion Básica</h3>
             </div>
             <!-- /.box-header -->
             <!-- form start -->
@@ -39,15 +39,15 @@
               <% end %>
               <div class="box-body">
                <div class="form-group">
-                  <label>Full Name</label>
+                  <label>Nombre</label>
                   <%= f.text_field :name, autocomplete: "off", placeholder: "Enter Full Name", class: "form-control", required: true  %>
                 </div>
                <div class="form-group">
-                  <label>E-mail Address</label>
+                  <label>E-mail</label>
                   <%= f.text_field :email, autocomplete: "off", placeholder: "Enter Email Address", class: "form-control", required: true  %>
                 </div>
                 <div class="form-group">
-                  <label>New Password</label>
+                  <label>Nuevo Password</label>
                   <%= f.password_field :password, autocomplete: "off", placeholder: "Enter Password", class: "form-control" %>
                   <% if @minimum_password_length %>
                     <br />
@@ -55,16 +55,18 @@
                   <% end %>
                 </div>
                 <div class="form-group">
-                  <label>New Password Again</label>
+                  <label>Nuevo Password Confirmación</label>
                   <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "Enter Password Again", class: "form-control" %>
                 </div>
               </div>
               <!-- /.box-body -->
               <div class="box-footer">
-                <%= f.submit "Submit", class: "btn btn-primary"%>
+                <%= f.submit "Aceptar", class: "btn btn-primary"%>
+<!--
                 <div class="pull-right">
                   <%= link_to 'Delete account', current_user, method: :delete, data: { confirm: 'Are you sure? This action can not be reversed.' }, class: "btn btn-danger" %>
                 </div>
+              -->
               </div>
             <% end %>
           </div>

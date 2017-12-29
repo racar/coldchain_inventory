@@ -1,59 +1,25 @@
-INDUFRIAL|Refrigerador/Congelador
-ELECTROLUZ|Refrigerador/Congelador
-HACEB|Refrigerador/Congelador
-VESTFROST|Refrigerador/Congelador
-UNICEF|Refrigerador/Congelador
-ELECTROLUX|Refrigerador/Congelador
-MABE|Refrigerador/Congelador
-ABBA|Refrigerador/Congelador
-GREENLINE|Refrigerador/Congelador
-CHALLENGER|Refrigerador/Congelador
-LG|Refrigerador/Congelador
-CASTELL|Refrigerador/Congelador
-ULTRALAB|Refrigerador/Congelador
-WHIRPOOL|Refrigerador/Congelador
-VITRA-LAB|Refrigerador/Congelador
-HAIER|Refrigerador/Congelador
-REFRIMAC|Refrigerador/Congelador
-SUPER NORDICO|Refrigerador/Congelador
-JOTAMARCOR|Refrigerador/Congelador
-IMBERA|Refrigerador/Congelador
-INDUSTRIAL|Refrigerador/Congelador
-SCALPEL|Refrigerador/Congelador
-WONDEL COOL|Refrigerador/Congelador
-ICASA|Refrigerador/Congelador
-ICE-LINED|Refrigerador/Congelador
-DENMARK|Refrigerador/Congelador
-PHILLIPS|Refrigerador/Congelador
-IBG|Refrigerador/Congelador
-GASTELL|Refrigerador/Congelador
-JLC|Refrigerador/Congelador
-DOMETIC|Refrigerador/Congelador
+SD|Refrigerador
+VESTFROST|Refrigerador
+SD|Congelador
+VESTFROST|Congelador
+COLDPACK|Termo
+DOMETIC|Termo
+AOV International|Termo
+Apex International|Termo
+Blowkings|Termo
+Nilkamal Limited|Termo
+Colombo Smart Plastic S.p.A|Termo
+Xinxiang Dengke|Termo
+GIOSTYLE|Termo
 KING SEELEY|Termo
-NILKAMAL|Termo
-AOV |Termo
-STORAGE 1.6 LTR STEP|Termo
-VACCINE CARRIER|Termo
-Colombo Smart Plastic S.p.A |Termo
-HELP|Termo
-APEX|Termo
-BLOW KINGS|Termo
-APEX |Termo
-COLEMAN|Termo
-THERMOSAFE|Caja
-NILKAMAL|Caja
-AOV International|Caja
-FRIGIVAC|Caja
 DOMETIC|Caja
-APEX|Caja
-COLEMAN|Caja
-CIP INDUSTRIES|Caja
-COLD BOX|Caja
-CAJA FRIA CIP INDUSTRIES|Caja
-CHERMOSAFE|Caja
-ADEMCO|Caja
-SD|Caja
-AMHIGO|Caja
+Apex International|Caja
+AOV International|Caja
+Nilkamal Limited|Caja
+DOMETIC|Caja
+Blowkings|Caja
+CIP INDUSTRIES CC|Caja
+THERMOSAFE|Caja
 LENNOS|Aire acondicionado
 LG|Aire acondicionado
 SAMSUNG|Aire acondicionado
@@ -165,3 +131,4 @@ VACFT17|Termometro
 DIGITAL THERMOMETER|Termometro
 CE-TAILOR|Termometro
 TERMOMETRO DIGITAL RX-1|Termometro
+SD|Planta Electrica

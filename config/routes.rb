@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
   devise_for :users
   resources :orders
   resources :members
   resources :users
   resources :items
+  resources :institucions
 
   root 'orders#index'
   get 'renew/:id' => 'orders#renew'

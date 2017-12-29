@@ -18,6 +18,9 @@ gem 'delayed_job_active_record'
 gem 'jquery-rails'
 gem 'jbuilder', '~> 2.5'
 gem 'pg'
+gem 'activeadmin'
+gem 'activeadmin-xls'
+
 group :development, :test do
   gem 'byebug', platform: :mri
 end

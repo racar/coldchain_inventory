@@ -10,10 +10,41 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171224170346) do
+ActiveRecord::Schema.define(version: 20171228174903) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "active_admin_comments", force: :cascade do |t|
+    t.string   "namespace"
+    t.text     "body"
+    t.string   "resource_type"
+    t.integer  "resource_id"
+    t.string   "author_type"
+    t.integer  "author_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id", using: :btree
+    t.index ["namespace"], name: "index_active_admin_comments_on_namespace", using: :btree
+    t.index ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id", using: :btree
+  end
+
+  create_table "admin_users", force: :cascade do |t|
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.inet     "current_sign_in_ip"
+    t.inet     "last_sign_in_ip"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.index ["email"], name: "index_admin_users_on_email", unique: true, using: :btree
+    t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
+  end
 
   create_table "categories", force: :cascade do |t|
     t.string   "nombre"
@@ -39,8 +70,13 @@ ActiveRecord::Schema.define(version: 20171224170346) do
   create_table "institucions", force: :cascade do |t|
     t.string   "name"
     t.integer  "municipio_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.string   "caracter"
+    t.string   "direccion"
+    t.string   "nit"
+    t.string   "cod_habilitacion"
+    t.string   "temperatura"
   end
 
   create_table "items", force: :cascade do |t|
@@ -48,8 +84,8 @@ ActiveRecord::Schema.define(version: 20171224170346) do
     t.string   "category"
     t.integer  "quantity"
     t.text     "description"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
     t.integer  "remaining_quantity"
     t.string   "marca"
     t.string   "modelo"
@@ -62,6 +98,15 @@ ActiveRecord::Schema.define(version: 20171224170346) do
     t.string   "volumen"
     t.string   "num_paquetes"
     t.integer  "institucion_id"
+    t.string   "tipo"
+    t.string   "potencia"
+    t.string   "cargador_bateria"
+    t.string   "transfer_automatica"
+    t.string   "capacidad_refrigeracion"
+    t.string   "dimensiones"
+    t.string   "funciona"
+    t.string   "compresor"
+    t.string   "num_compresores"
   end
 
   create_table "marcas", force: :cascade do |t|

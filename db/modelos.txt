@@ -1,94 +1,55 @@
-Refrigerador/Congelador|ABBA|247
-Refrigerador/Congelador|CASTELL|BD/BG-300
-Refrigerador/Congelador|CHALLENGER|CB430
-Refrigerador/Congelador|CHALLENGER|CR074
-Refrigerador/Congelador|CHALLENGER|CV430
-Refrigerador/Congelador|CHALLENGER|CR340
-Refrigerador/Congelador|CHALLENGER|CR-265
-Refrigerador/Congelador|CHALLENGER|r3m002859
-Refrigerador/Congelador|CHALLENGER|DPR3M007584
-Refrigerador/Congelador|CHALLENGER|R3M007594
-Refrigerador/Congelador|CHALLENGER|530
-Refrigerador/Congelador|DOMETIC|TCW3000AC
-Refrigerador/Congelador|ELECTROLUX|GSC003
-Refrigerador/Congelador|ELECTROLUX|EC226NBHW
-Refrigerador/Congelador|ELECTROLUX|GSC304
-Refrigerador/Congelador|ELECTROLUX|EFUA38W3MLS
-Refrigerador/Congelador|GREENLINE|VL5350
-Refrigerador/Congelador|HACEB|THB1335YS
-Refrigerador/Congelador|HACEB|N814
-Refrigerador/Congelador|HACEB|MAXI
-Refrigerador/Congelador|HACEB|N11290L1
-Refrigerador/Congelador|HACEB|N8-1 EC
-Refrigerador/Congelador|HAIER|HYC-68A
-Refrigerador/Congelador|HAIER|HBC 200
-Refrigerador/Congelador|HAIER|HBC-110
-Refrigerador/Congelador|IBG|IBG200CF
-Refrigerador/Congelador|ICASA|N282ATECE1PA
-Refrigerador/Congelador|ICASA|AT-9
-Refrigerador/Congelador|IMBERA|CH300C
-Refrigerador/Congelador|INDUFRIAL|ICH-11
-Refrigerador/Congelador|INDUFRIAL|TW1390
-Refrigerador/Congelador|INDUFRIAL|ICHV-SR
-Refrigerador/Congelador|JLC|BD350Q110 VOLTIOS
-Refrigerador/Congelador|JOTAMARCOR|130205
-Refrigerador/Congelador|LG|GR30W62CP
-Refrigerador/Congelador|MABE|MRS45CYLE1
-Refrigerador/Congelador|MABE|CMC145B
-Refrigerador/Congelador|MABE|ALASKA 145B0
-Refrigerador/Congelador|MABE|RM53004LE1
-Refrigerador/Congelador|MABE|RML267YJCEB1
-Refrigerador/Congelador|PHILLIPS|ST-910
-Refrigerador/Congelador|SCALPEL|ML155S
-Refrigerador/Congelador|SUPER NORDICO|ST-R06
-Refrigerador/Congelador|ULTRALAB|XX1-01
-Refrigerador/Congelador|VESTFROST|VLS350
-Refrigerador/Congelador|VESTFROST|VLS064
-Refrigerador/Congelador|VESTFROST|MK 204
-Refrigerador/Congelador|VESTFROST|MK144
-Refrigerador/Congelador|VESTFROST|MK 304
-Refrigerador/Congelador|VESTFROST|VLS 350
-Refrigerador/Congelador|VESTFROST|VLS400
-Refrigerador/Congelador|VESTFROST|MK305
-Refrigerador/Congelador|VESTFROST|MK 300
-Refrigerador/Congelador|VESTFROST|MF314
-Refrigerador/Congelador|VITRA-LAB|LAB XX-1
-Refrigerador/Congelador|WHIRPOOL|VST0391555
-Refrigerador/Congelador|WHIRPOOL|S-03-XEH11
-Refrigerador/Congelador|WONDEL COOL|B20970069
+Refrigerador|VESTFROST|VLS-200
+Refrigerador|VESTFROST|VLS-300
+Refrigerador|VESTFROST|VLS-400
+Refrigerador|VESTFROST|VLS-350
+Refrigerador|VESTFROST|VLS-064
+Refrigerador|VESTFROST|VLS-054
+Congelador|VESTFROST|MF-114
+Congelador|VESTFROST|MF-214
+Congelador|VESTFROST|MF-314
+Refrigerador|VESTFROST|MK-204
+Refrigerador|VESTFROST|MK-144
+Refrigerador|VESTFROST|MK-304
+Refrigerador|VESTFROST|VLS-350
+Refrigerador|VESTFROST|MK-305
+Refrigerador|VESTFROST|MK-300
 Termo|KING SEELEY|3504UN/CF
 Termo|NILKAMAL|BCVC46
-Termo|AOV |AVC-46
-Termo|STORAGE 1.6 LTR STEP|B91/0647
-Termo|VACCINE CARRIER|3504
-Termo|Colombo Smart Plastic S.p.A |VC 2.6L
-Termo|AOV |AVC-44
-Termo|APEX|AIVC-44
-Termo|Colombo Smart Plastic S.p.A |Gio style
-Termo|BLOW KINGS|4 LITROS
-Termo|APEX |AIVC-44
-Termo|NILKAMAL|BCVC43
+Termo|AOV|AVC-46
+Termo|AOV|AVC-44
+Termo|AOV|ADVC-24
+Termo|Apex International|AIVC-44
+Termo|Apex International|AIDVC-24
+Termo|Blowkings|BK-VC 2.6-CF
+Termo|Blowkings|BK-VC 1.7-CF
+Termo|Blowkings|VDC-24-CF
+Termo|Colombo Smart Plastic S.p.A|VC 2.6L
+Termo|Nilkamal Limited|BCVC-43
+Termo|Nilkamal Limited|BBVC-23
+Termo|Nilkamal Limited|BCVB44A
+Termo|Xinxiang Dengke|LCX-3.6L
+Termo|Xinxiang Dengke|LCX-6L
+Termo|COLDPACK|7LTD
+Termo|DOMETIC|RCW4
+Caja|DOMETIC|RCW12
+Caja|DOMETIC|RCW25
+Caja|DOMETIC|RCW8
 Caja|ADEMCO|AICB 243 S
-Caja|AOV International|ACB 246LS
-Caja|APEX|ACB444L
-Caja|APEX|AICB 243S
-Caja|CIP INDUSTRIES|LSR-50
-Caja|CIP INDUSTRIES|SLR 100
+Caja|AOV International|ACB-246LS
+Caja|AOV International|ACB-444L
+Caja|AOV International|ACB-503L
+Caja|AOV International|ACB-324SS
+Caja|AOV International|ACB-246LS
+Caja|Apex International|AICB-444L
+Caja|Apex International|AICB-243S
+Caja|Apex International|AICB-503L
+Caja|Blowkings|CB-12-CF
+Caja|Blowkings|CB-55-CF
+Caja|Blowkings|CB-20-CF
+Caja|CIP INDUSTRIES CC|LSR-50
+Caja|CIP INDUSTRIES CC|SLR-100
 Caja|COLD BOX|ACB1316L
-Caja|DOMETIC|RCW 12
-Caja|DOMETIC|RCW 25
-Caja|DOMETIC|RCW 8
-Caja|FRIGIVAC|RANDBURG
-Caja|FRIGIVAC|P.O.Box 1782
-Caja|FRIGIVAC|CIP- SLR100
-Caja|FRIGIVAC|2125
-Caja|NILKAMAL|RCB-444L 23
-Caja|NILKAMAL|RIVC-60-D
-Caja|THERMOSAFE|BD/BG-300
+Caja|Nilkamal Limited|RCB-444L 23
+Caja|Nilkamal Limited|RCB324SS
+Caja|Nilkamal Limited|RCB 44L-A
 Caja|THERMOSAFE|390
-Caja|THERMOSAFE|422
-Caja|THERMOSAFE| RCB444L
-Caja|THERMOSAFE|323-7442
-Caja|THERMOSAFE|AICB 503L
-Caja|THERMOSAFE|800-323-7442
-Caja|THERMOSAFE|339

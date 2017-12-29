@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :destroy]
-
+  skip_before_action :verify_authenticity_token #refactor in an api
   def index
     @items = Item.where('institucion_id = ?',current_user.institucion_id)
   end
@@ -39,7 +39,9 @@ class ItemsController < ApplicationController
 
   def getMarcas
     #[["Refrigerador/Congelador","Refrigerador/Congelador"], ["Termo","Termo"], ["Caja","Caja"], ["Aire acondicionado","Aire"], ["Termometro","Termometro"]]
+    puts params[:categoria]
     @marcas = Marca.where(['category_id = ?',params[:categoria]])
+
     respond_to do |format|
        format.json { render :json => @marcas }
      end
@@ -59,6 +61,6 @@ class ItemsController < ApplicationController
   end
 
   def item_params
-    params.require(:item).permit(:name, :category, :marca, :modelo, :serial, :mantenimiento, :num_manten_year, :modelo_id, :marca_id)
+    params.require(:item).permit(:name, :category, :marca, :modelo, :serial, :mantenimiento, :num_manten_year, :modelo_id, :marca_id, :regulador, :potencia, :transfer_automatica, :cargador_bateria, :capacidad_refrigeracion, :volumen, :quantity, :num_paquetes, :dimensiones, :funciona, :compresor,:num_compresores)
   end
 end
