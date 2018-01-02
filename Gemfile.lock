@@ -249,6 +249,7 @@ DEPENDENCIES
   rails (~> 5.0.2)
   rails_12factor
   sass-rails (~> 5.0)
+  spreadsheet
   spring
   spring-watcher-listen (~> 2.0.0)
   sqlite3

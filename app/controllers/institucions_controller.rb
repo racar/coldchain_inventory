@@ -38,6 +38,6 @@ class InstitucionsController < ApplicationController
     end
 
     def institucion_params
-      params.require(:institucion).permit(:name, :caracter, :direccion, :nit, :cod_habilita, :temperatura)
+      params.require(:institucion).permit(:name, :caracter, :direccion, :nit, :cod_habilitacion, :temperatura)
     end
 end

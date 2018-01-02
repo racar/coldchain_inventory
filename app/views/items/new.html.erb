@@ -46,7 +46,7 @@
                 <div class="form-group">
                   <label>Categoría</label>
                 <!--  <%= f.select(:category, [["Refrigerador/Congelador","Refrigerador/Congelador"], ["Termo","Termo"], ["Caja","Caja"], ["Aire acondicionado","Aire"], ["Termometro","Termometro"]], {}, { :class => 'form-control' })%> -->
-                  <%= f.collection_select(:category, Category.all, :id, :nombre, :prompt => "Seleccione...") %>
+                  <%= f.collection_select(:category, Category.all, :id, :nombre, {:prompt => "Seleccione..."},{:class => 'form-control'}) %>
                 </div>
                 <div id="tipo_planta" class="form-group">
                   <label>Tipo planta</label>
@@ -56,7 +56,7 @@
 
                 <div id="dimensiones" class="form-group">
                   <label>Dimensiones</label>
-                  <%= f.text_field :dimensiones, class: "form-control", placeholder: "Ingrese Dimensiones", required: true  %>
+                  <%= f.text_field :dimensiones, class: "form-control", placeholder: "Ingrese Dimensiones" %>
                 </div>
 
                 <div class="form-group">
@@ -72,19 +72,19 @@
                 </div>
                 <div id ="volumen" class="form-group">
                   <label>Volumen en Litros</label>
-                  <%= f.text_field :volumen, class: "form-control", placeholder: "Ingrese Volumen", required: true  %>
+                  <%= f.text_field :volumen, class: "form-control", placeholder: "Ingrese Volumen"%>
                 </div>
                 <div id="quantity" class="form-group">
-                  <label>Cantidad <div id="evaporadores"> de Evaporadores </div></label>
-                  <%= f.number_field :quantity, class: "form-control", placeholder: "Ingrese Cantidad", required: true  %>
+                  <label>Cantidad <div id="cantevaporadores"> de Evaporadores </div></label>
+                  <%= f.number_field :quantity, class: "form-control", placeholder: "Ingrese Cantidad"%>
                 </div>
                 <div id="compresor" class="form-group">
                   <label>Marca del Compresor</label>
-                  <%= f.text_field :compresor, class: "form-control", placeholder: "Ingrese Marca compresor", required: true  %>
+                  <%= f.text_field :compresor, class: "form-control", placeholder: "Ingrese Marca compresor"%>
                 </div>
                 <div id="num_compresores" class="form-group">
                   <label>Numero de Compresores</label>
-                  <%= f.number_field :num_compresores, class: "form-control", placeholder: "Ingrese numero compresores", required: true  %>
+                  <%= f.number_field :num_compresores, class: "form-control", placeholder: "Ingrese numero compresores"%>
                 </div>
                 <div id="funciona" class="form-group">
                   <label>¿Funciona?</label>
@@ -94,23 +94,29 @@
 
                 <div id="num_paquetes" class="form-group">
                   <label>Cantidad de paquetes</label>
-                  <%= f.number_field :num_paquetes, class: "form-control", placeholder: "Ingrese Cantidad de paquetes", required: true  %>
+                  <%= f.number_field :num_paquetes, class: "form-control", placeholder: "Ingrese Cantidad de paquetes"%>
                 </div>
                 <div id="serial" class="form-group">
                   <label>Serial</label>
-                  <%= f.text_field :serial, class: "form-control", placeholder: "Ingrese Serie", required: true  %>
+                  <%= f.text_field :serial, class: "form-control", placeholder: "Ingrese Serie"  %>
                 </div>
                 <div id ="capacidad_refrigeracion" class="form-group">
                   <label>Capacidad de refrigeracion [BTH/h]</label>
-                  <%= f.text_field :capacidad_refrigeracion, class: "form-control", placeholder: "Ingrese numero mantenimientos", required: true  %>
-                  Es la rata de extracción de calor del equipo y se mide en BTH/h.
+                  <%= f.text_field :capacidad_refrigeracion, class: "form-control", placeholder: "Ingrese numero mantenimientos"%>
+                  <div class ="callout callout-info">
+                  Es la rata de extracción de calor del equipo y se mide en BTH/h, este dato se encuentra en una placa del equipo por lo general ubicada en un costado del mismo.
+                 </div>
                 </div>
                 <div id ="potencia" class="form-group">
                   <label>Potencia [KVA]</label>
-                  <%= f.text_field :potencia, class: "form-control", placeholder: "Ingrese potencia", required: true  %>
-                  Es la potencia nominal o aparente que puede entregar la planta eléctrica en vacío a nivel del mar la unidad de medida es Kva,
-                  y el dato se encuentra en la placa ubicada en la carcasa, para mayor confiabilidad del dato se puede solicitar apoyo al técnico de mantenimiento.
-                  Si no se tiene placa de datos en el equipo ni manual para verificar la información se debe registrar SD.
+                  <%= f.text_field :potencia, class: "form-control", placeholder: "Ingrese potencia" %>
+                  <div class ="callout callout-info">
+                    <strong> Potencia.</strong><br/>
+                    Es la potencia nominal o aparente que puede entregar la planta eléctrica la unidad de medida es Kva,
+                     para mayor confiabilidad del dato se puede solicitar apoyo al técnico de mantenimiento.
+                    Si no se tiene placa de datos en el equipo ni manual para verificar la información se debe registrar SD.
+                  </div>
+
                 </div>
                 <div id="mantenimiento" class="form-group">
                   <label>¿Cuenta con Mantenimiento?</label>
@@ -119,7 +125,7 @@
                 </div>
                 <div id="num_manten_year" class="form-group">
                   <label>Numero Mantenimientos al año</label>
-                  <%= f.text_field :num_manten_year, class: "form-control", placeholder: "Ingrese numero mantenimientos", required: true  %>
+                  <%= f.text_field :num_manten_year, class: "form-control", placeholder: "Ingrese numero mantenimientos" %>
                 </div>
                 <div id ="regulador" class="form-group">
                   <label>¿Tiene regulador?</label>
@@ -127,11 +133,14 @@
                   <%= f.select(:regulador, [["Si","Si"], ["No","No"]], {}, { :class => 'form-control' })%>
                 </div>
                 <div id="monitoreo" class="form-group">
-                  <label>Sistema de monitoreo</label>
+                  <label>Sistema de Monitoreo</label>
 
-                  <%= f.select(:monitoreo, [["TDMM","TDMM"], ["AUTO","AUTO"], ["NO","NO"]], {}, { :class => 'form-control' })%> *
-                  *TDMM: monitoreo manual con ayuda del termómetro digital de máximas y mínimas.
-                  AUTO: monitoreo automático conectado a internet con servicio de llamada a celular ante desborde de temperatura.
+                  <%= f.select(:monitoreo, [["TDMM","TDMM"], ["AUTO","AUTO"], ["NO","NO"]], {}, { :class => 'form-control' })%>
+                <div class ="callout callout-info">
+                  <strong> Sistema de Monitoreo.</strong><br/>
+                  -TDMM monitoreo manual con ayuda del termómetro digital de máximas y mínimas.<br/>
+                  -AUTO: monitoreo automático conectado a internet con servicio de llamada a celular ante desborde de temperatura.
+                </div>
                 </div>
 
 
@@ -139,11 +148,20 @@
                   <label>¿Funciona Cargador de batería?</label>
 
                   <%= f.select(:cargador_bateria, [["Si","Si"], ["No","No"], ["SB","SB"]], {}, { :class => 'form-control' })%>
+                  <div class ="callout callout-info">
+                    <strong> Batería.</strong><br/>
+                    -Se debe diligenciar SI, si se tiene la batería en buen estado y conectada, de lo contrario diligencie NO. En caso de no tener cargador de la batería se debe diligenciar SB.<br/>
+
+                  </div>
                 </div>
                 <div id ="transfer_automatica" class="form-group">
                   <label>¿Funciona transferencia automática?</label>
 
                   <%= f.select(:transfer_automatica, [["Si","Si"], ["No","No"], ["TM","TM"]], {}, { :class => 'form-control' })%>
+                  <div class ="callout callout-info">
+                    <strong> Transferencia automática.</strong><br/>
+                    -Se debe diligenciar un SI, si se tiene transferencia en buen estado y conectada, de lo contrario diligencie NO, En caso de no tener transferencia automática, sino manual se debe diligenciar TM.
+                  </div>
                 </div>
 
               </div>
@@ -177,7 +195,28 @@
     </script>
     <script>
     jQuery(function($) {
+      $('#monitoreo').hide();
+      $('#regulador').hide();
+      $('#serial').hide();
+      $('#mantenimiento').hide();
+      $('#num_manten_year').hide();
+      $('#modelo').hide();
+      //
       $('#tipo_planta').hide();
+      $('#potencia').hide();
+      $('#transfer_automatica').hide();
+      $('#cargador_bateria').hide();
+      $('#capacidad_refrigeracion').hide();
+      $('#volumen').hide();
+      $('#quantity').hide();
+      $('#num_paquetes').hide();
+      $('#dimensiones').hide();
+
+      $('#compresor').hide();
+      $('#num_compresores').hide();
+      $('#funciona').hide();
+      $('#evaporadores').hide();
+      $('#cantevaporadores').hide();
       //trae marcas asociadas a categorias
       $("#item_category").change(function() {
 
@@ -191,8 +230,13 @@
               dataType: "json",
               success: function (result) {
                 $("#item_marca").find('option').remove();
+                $("#item_marca").append($('<option>', {
+                          value: '0',
+                          text:  'Seleccione..'
+                }))
                   var marcas = result
                   for (var i = 0; i < marcas.length; i++) {
+
                     $("#item_marca").append($('<option>', {
                               value: marcas[i].id,
                               text:  marcas[i].nombre
@@ -219,8 +263,14 @@
               data : mandando,
               dataType: "json",
               success: function (result) {
+                $("#item_modelo").find('option').remove();
+                $("#item_modelo").append($('<option>', {
+                          value: '0',
+                          text:  'Seleccione..'
+                }))
                   var modelos = result
                   for (var i = 0; i < modelos.length; i++) {
+
                     $("#item_modelo").append($('<option>', {
                               value: modelos[i].id,
                               text:  modelos[i].nombre
@@ -260,6 +310,7 @@
                   $('#num_compresores').hide();
                   $('#funciona').hide();
                   $('#evaporadores').hide();
+                  $('#cantevaporadores').hide();
 
                    break;
           case '2': //Congelador
@@ -282,6 +333,8 @@
                    $('#num_compresores').hide();
                    $('#funciona').hide();
                    $('#evaporadores').hide();
+                   $('#dimensiones').hide();
+                   $('#cantevaporadores').hide();
                     break;
             case '3': //nevera
                     $('#monitoreo').show();
@@ -303,6 +356,8 @@
                     $('#num_compresores').hide();
                     $('#funciona').hide();
                     $('#evaporadores').hide();
+                    $('#dimensiones').hide();
+                    $('#cantevaporadores').hide();
                      break;
             case '4'://refrigerador/Congelador
                      $('#monitoreo').show();
@@ -324,6 +379,8 @@
                      $('#num_compresores').hide();
                      $('#funciona').hide();
                      $('#evaporadores').hide();
+                     $('#dimensiones').hide();
+                     $('#cantevaporadores').hide();
                       break;
             case '5': //refrigerador vertical
                       $('#monitoreo').show();
@@ -345,6 +402,8 @@
                       $('#num_compresores').hide();
                       $('#funciona').hide();
                       $('#evaporadores').hide();
+                      $('#dimensiones').hide();
+                      $('#cantevaporadores').hide();
                        break;
 
 
@@ -368,6 +427,8 @@
                   $('#num_compresores').hide();
                   $('#funciona').hide();
                   $('#evaporadores').hide();
+                  $('#cantevaporadores').hide();
+                  $('#dimensiones').hide();
                    break;
           case '7': //Caja
                   $('#volumen').show();
@@ -389,6 +450,8 @@
                   $('#num_compresores').hide();
                   $('#funciona').hide();
                   $('#evaporadores').hide();
+                  $('#cantevaporadores').hide();
+                  $('#dimensiones').hide();
                    break;
           case '8': // aire acondicionado
                   $('#capacidad_refrigeracion').show();
@@ -409,6 +472,8 @@
                   $('#num_compresores').hide();
                   $('#funciona').hide();
                   $('#evaporadores').hide();
+                  $('#cantevaporadores').hide();
+                  $('#dimensiones').hide();
                   break;
           case '9': // planta electrica
                   //muestra
@@ -428,6 +493,8 @@
                   $('#num_compresores').hide();
                   $('#funciona').hide();
                   $('#evaporadores').hide();
+                  $('#cantevaporadores').hide();
+                  $('#dimensiones').hide();
                    break;
           case '11': //cuarto frio
                   $('#dimensiones').show();
@@ -437,7 +504,7 @@
                   $('#funciona').show();
                   $('#mantenimiento').show();
                   $('#monitoreo').show();
-                  $('#evaporadores').show();
+                  $('#evaporadores').show();$('#cantevaporadores').show();
 
                   $('#modelo').hide();
                   $('#tipo_planta').hide();
@@ -451,6 +518,7 @@
                   $('#regulador').hide();
                   $('#modelo').hide();
                   $('#num_manten_year').hide();
+
                    break;
         }
 

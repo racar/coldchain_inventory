@@ -3,9 +3,7 @@ class Order < ApplicationRecord
   belongs_to :member
 
   validates :quantity, presence: true
-  validates :expire_at, presence: true
-  validates :item_id, presence: true
-  validates :member_id, presence: true
+
 
   def self.active?
     Order.where(status: true)

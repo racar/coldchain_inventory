@@ -20,6 +20,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'pg'
 gem 'activeadmin'
 gem 'activeadmin-xls'
+gem 'spreadsheet'
 
 group :development, :test do
   gem 'byebug', platform: :mri

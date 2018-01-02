@@ -61,6 +61,6 @@ class ItemsController < ApplicationController
   end
 
   def item_params
-    params.require(:item).permit(:name, :category, :marca, :modelo, :serial, :mantenimiento, :num_manten_year, :modelo_id, :marca_id, :regulador, :potencia, :transfer_automatica, :cargador_bateria, :capacidad_refrigeracion, :volumen, :quantity, :num_paquetes, :dimensiones, :funciona, :compresor,:num_compresores)
+    params.require(:item).permit(:name, :category, :marca, :modelo, :serial, :mantenimiento, :num_manten_year, :modelo_id, :marca_id, :regulador, :potencia, :transfer_automatica, :cargador_bateria, :capacidad_refrigeracion, :volumen, :quantity, :num_paquetes, :dimensiones, :funciona, :compresor, :num_compresores, :monitoreo)
   end
 end
