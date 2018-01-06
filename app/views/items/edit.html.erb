@@ -22,7 +22,7 @@
       <section class="content">
         <div class="row">
           <!-- left column -->
-          <div class="col-md-6">
+          <div class="col-md-10">
             <!-- general form elements -->
             <div class="box box-header">
               <div class="box-header with-border">
@@ -106,14 +106,18 @@
                 <div id ="capacidad_refrigeracion" class="form-group">
                   <label>Capacidad de refrigeracion [BTH/h]</label>
                   <%= f.text_field :capacidad_refrigeracion, class: "form-control", placeholder: "Ingrese numero mantenimientos"%>
-                  Es la rata de extracción de calor del equipo y se mide en BTH/h.
+                  <div class ="callout callout-info">
+                  Es la rata de extracción de calor del equipo y se mide en BTH/h, este dato se encuentra en una placa del equipo por lo general ubicada en un costado del mismo.
+                 </div>
                 </div>
                 <div id ="potencia" class="form-group">
                   <label>Potencia [KVA]</label>
-                  <%= f.text_field :potencia, class: "form-control", placeholder: "Ingrese potencia" %>
-                  Es la potencia nominal o aparente que puede entregar la planta eléctrica en vacío a nivel del mar la unidad de medida es Kva,
-                  y el dato se encuentra en la placa ubicada en la carcasa, para mayor confiabilidad del dato se puede solicitar apoyo al técnico de mantenimiento.
-                  Si no se tiene placa de datos en el equipo ni manual para verificar la información se debe registrar SD.
+                  <div class ="callout callout-info">
+                    <strong> Potencia.</strong><br/>
+                    Es la potencia nominal o aparente que puede entregar la planta eléctrica la unidad de medida es Kva,
+                     para mayor confiabilidad del dato se puede solicitar apoyo al técnico de mantenimiento.
+                    Si no se tiene placa de datos en el equipo ni manual para verificar la información se debe registrar SD.
+                  </div>
                 </div>
                 <div id="mantenimiento" class="form-group">
                   <label>¿Cuenta con Mantenimiento?</label>
@@ -133,8 +137,11 @@
                   <label>Sistema de monitoreo</label>
 
                   <%= f.select(:monitoreo, [["TDMM","TDMM"], ["AUTO","AUTO"], ["NO","NO"]], {}, { :class => 'form-control' })%> *
-                  *TDMM: monitoreo manual con ayuda del termómetro digital de máximas y mínimas.
-                  AUTO: monitoreo automático conectado a internet con servicio de llamada a celular ante desborde de temperatura.
+                  <div class ="callout callout-info">
+                    <strong> Sistema de Monitoreo.</strong><br/>
+                    -TDMM monitoreo manual con ayuda del termómetro digital de máximas y mínimas.<br/>
+                    -AUTO: monitoreo automático conectado a internet con servicio de llamada a celular ante desborde de temperatura.
+                  </div>
                 </div>
 
 
@@ -142,11 +149,20 @@
                   <label>¿Funciona Cargador de batería?</label>
 
                   <%= f.select(:cargador_bateria, [["Si","Si"], ["No","No"], ["SB","SB"]], {}, { :class => 'form-control' })%>
+                  <div class ="callout callout-info">
+                    <strong> Batería.</strong><br/>
+                    -Se debe diligenciar SI, si se tiene la batería en buen estado y conectada, de lo contrario diligencie NO. En caso de no tener cargador de la batería se debe diligenciar SB.<br/>
+
+                  </div>
                 </div>
                 <div id ="transfer_automatica" class="form-group">
                   <label>¿Funciona transferencia automática?</label>
 
                   <%= f.select(:transfer_automatica, [["Si","Si"], ["No","No"], ["TM","TM"]], {}, { :class => 'form-control' })%>
+                  <div class ="callout callout-info">
+                    <strong> Transferencia automática.</strong><br/>
+                    -Se debe diligenciar un SI, si se tiene transferencia en buen estado y conectada, de lo contrario diligencie NO, En caso de no tener transferencia automática, sino manual se debe diligenciar TM.
+                  </div>
                 </div>
 
               </div>

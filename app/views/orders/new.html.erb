@@ -5,10 +5,10 @@
     <div class="content-wrapper">
       <!-- Content Header (Page header) -->
       <section class="content-header">
-        <h1>Nueva Solicitud</h1>
+        <h1>Necesidad de equipos de red de frio</h1>
         <ol class="breadcrumb">
           <li><a href="#"><i class="fa fa-home"></i>Home Page</a></li>
-          <li class="active">Nueva solicitud</li>
+          <li class="active">Necesidad Equipos</li>
         </ol>
       </section>
 
@@ -39,7 +39,7 @@
                 <div class="box-body">
                   <div class="form-group">
                     <label>Categoría</label>
-                  
+
                     <%= f.collection_select(:category_id, Category.all, :id, :nombre, {:prompt => "Seleccione..."},{:class => 'form-control'}) %>
                   </div>
 

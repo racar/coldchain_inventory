@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :users
   resources :items
   resources :institucions
+  resources :mantenimientos
 
   root 'orders#index'
   get 'renew/:id' => 'orders#renew'

@@ -18,6 +18,11 @@ class ItemsController < ApplicationController
     @item = Item.new(item_params)
     @item.institucion_id = current_user.institucion_id
     if @item.save
+    #  if @item.mantenimiento === 'Si'
+        @mantenimiento = Mantenimiento.new
+        @mantenimiento.item_id = @item.id
+        @mantenimiento.save
+    #  end
       redirect_to :root, notice: 'Item was successfully created.'
     else
       render :new

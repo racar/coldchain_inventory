@@ -5,8 +5,9 @@ class OrdersController < ApplicationController
     @orders = Order.all
     @members = Member.all
     @items = Item.where('institucion_id = ?',current_user.institucion_id)
-    @active = Order.active?
-    @expired = Order.expired?
+    @active = Order.all
+    @expired = Order.all
+    
   end
 
   def old

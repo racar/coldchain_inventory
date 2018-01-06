@@ -22,7 +22,7 @@
       <section class="content">
         <div class="row">
           <!-- left column -->
-          <div class="col-md-6">
+          <div class="col-md-10">
             <!-- general form elements -->
             <div class="box box-header">
               <div class="box-header with-border">
@@ -121,7 +121,7 @@
                 <div id="mantenimiento" class="form-group">
                   <label>¿Cuenta con Mantenimiento?</label>
 
-                  <%= f.select(:mantenimiento, [["Si","Si"], ["No","No"]], {}, { :class => 'form-control' })%>
+                  <%= f.select(:mantenimiento, [["No","No"],["Si","Si"]], {}, { :class => 'form-control' })%>
                 </div>
                 <div id="num_manten_year" class="form-group">
                   <label>Numero Mantenimientos al año</label>

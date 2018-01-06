@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  man_programados: 1
+  man_realizados: 1
+  observaciones: MyString
+  fecha_firma: 2018-01-04
+  fecha_vigencia: 2018-01-04
+  supervisor: MyString
+  cargo_supervisor: MyString
+
+two:
+  man_programados: 1
+  man_realizados: 1
+  observaciones: MyString
+  fecha_firma: 2018-01-04
+  fecha_vigencia: 2018-01-04
+  supervisor: MyString
+  cargo_supervisor: MyString

@@ -1,0 +1,477 @@
+<body class="hold-transition skin-blue sidebar-mini">
+  <div class="wrapper">
+    <%= render 'layouts/header' %>
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+      <!-- Content Header (Page header) -->
+      <section class="content-header">
+        <h1>
+          Mantenimientos
+        </h1>
+        <ol class="breadcrumb">
+          <li>
+            <a href="#">
+              <i class="fa fa-home"></i>
+              Home </a>
+          </li>
+          <li class="active">Mantenimientos</li>
+        </ol>
+      </section>
+
+      <!-- Main content -->
+      <section class="content">
+        <div class="row">
+          <!-- left column -->
+          <div class="col-md-10">
+            <!-- general form elements -->
+            <div class="box box-header">
+              <div class="box-header with-border">
+                <h3 class="box-title">Información básica</h3>
+              </div>
+              <!-- /.box-header -->
+              <!-- form start -->
+              <%= form_for @mantenimiento do |f| %>
+              <% if @mantenimiento.errors.any? %>
+              <div id="error_explanation">
+                <h2><%= pluralize(@mantenimiento.errors.count, "error") %>
+                  prohibited this item from being saved:</h2>
+                <ul>
+                  <% @mantenimiento.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                  <% end %>
+                </ul>
+              </div>
+              <% end %>
+              <div class="box-body">
+
+                <div id="prog" class="form-group">
+                  <label>Mantenimientos Programados</label>
+                  <%= f.number_field :man_programados, class: "form-control", placeholder: "Ingrese Numero"%>
+                </div>
+                <div id="real" class="form-group">
+                  <label>Mantenimientos Realizados</label>
+                  <%= f.number_field :man_realizados, class: "form-control", placeholder: "Ingrese Numero"%>
+                </div>
+                <div id="real" class="form-group">
+                <label>Fecha Mantenimientos</label>
+                </div>
+                <div class="col-md-6">
+                <%= f.date_field :fecha_man1, class: "form-control"%>
+                </div>
+                <div class="col-md-6">
+                <%= f.date_field :fecha_man2, class: "form-control"%>
+                </div>
+                <div class="col-md-6">
+                <%= f.date_field :fecha_man3, class: "form-control"%>
+                </div>
+                <div class="col-md-6">
+                <%= f.date_field :fecha_man4, class: "form-control"%>
+                </div>
+                <div class="col-md-6">
+                <%= f.date_field :fecha_man5, class: "form-control"%>
+                </div>
+                <div class="col-md-6">
+                <%= f.date_field :fecha_man6, class: "form-control"%>
+                </div>
+                <div class="col-md-6">
+                <%= f.date_field :fecha_man7, class: "form-control"%>
+                </div>
+                <div class="col-md-6">
+                <%= f.date_field :fecha_man8, class: "form-control"%>
+                </div>
+                <div class="col-md-6">
+                <%= f.date_field :fecha_man9, class: "form-control"%>
+                </div>
+                <div class="col-md-6">
+                <%= f.date_field :fecha_man10, class: "form-control"%>
+                </div>
+                <div class="col-md-6">
+                <%= f.date_field :fecha_man11, class: "form-control"%>
+                </div>
+                <div class="col-md-6">
+                <%= f.date_field :fecha_man12, class: "form-control"%>
+                </div>
+
+
+                <br/><br/><br/>
+                <div id="observaciones" class="form-group">
+                  <label>Observaciones</label>
+                  <%= f.text_area :observaciones, class: "form-control", placeholder: "Ingrese Texto" %>
+                </div>
+
+
+
+
+                <div id ="firma" class="form-group">
+                  <label>Fecha Firma</label>
+                  <%= f.date_field :fecha_firma, class: "form-control"%>
+                </div>
+                <div id ="vigencia" class="form-group">
+                  <label>Fecha Vigencia</label>
+                  <%= f.date_field :fecha_vigencia, class: "form-control"%>
+                </div>
+
+                <div id="supervisor" class="form-group">
+                  <label>Supervisor</label>
+                  <%= f.text_field :supervisor, class: "form-control", placeholder: "Ingrese Nombre" %>
+                </div>
+
+                <div id="cargo" class="form-group">
+                  <label>Cargo Supervisor</label>
+                  <%= f.text_field :cargo_supervisor, class: "form-control", placeholder: "Ingrese Nombre" %>
+                </div>
+
+
+              </div>
+              <!-- /.box-body -->
+              <div class="box-footer">
+                <%= f.submit "Aceptar", class: "btn btn-primary"%>
+              </div>
+              <% end %>
+            </div>
+            <!-- /.box -->
+          </div>
+          <!--/.col (right) -->
+        </div>
+        <!-- /.row -->
+      </section>
+      <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+    <footer class="main-footer">
+      <div class="pull-right hidden-xs">
+        <b>Version</b>
+        0.9
+      </div>
+      Inventario del
+      <a href="http://www.saludinfantilvalledelcauca.co/">PAI Valle del Cauca</a>.
+    </footer>
+    <!-- ./wrapper -->
+    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+    <script>
+      $.widget.bridge('uibutton', $.ui.button);
+    </script>
+    <script>
+    jQuery(function($) {
+
+      opciones($("#item_category").val())
+      //trae marcas asociadas a categorias
+      $("#item_category").change(function() {
+
+        mandando = JSON.stringify({categoria:$("#item_category").val()})
+
+        $.ajax({
+              type: "POST",// GET in place of POST
+              contentType: "application/json; charset=utf-8",
+              url: "/items/getMarcas/",
+              data : mandando,
+              dataType: "json",
+              success: function (result) {
+                $("#item_marca").find('option').remove();
+                $("#item_marca").append($('<option>', {
+                          value: '0',
+                          text:  'Seleccione..'
+                }))
+                  var marcas = result
+                  for (var i = 0; i < marcas.length; i++) {
+
+                    $("#item_marca").append($('<option>', {
+                              value: marcas[i].id,
+                              text:  marcas[i].nombre
+                    }))
+
+                  }
+              },
+              error: function (){
+                  window.alert("El servidor no responde");
+              }
+          });
+      });
+
+
+// trae modelos asociados a marcas
+      $("#item_marca").change(function() {
+
+        mandando = JSON.stringify({categoria:$("#item_category").val(),marca:$("#item_marca").val()})
+
+        $.ajax({
+              type: "POST",// GET in place of POST
+              contentType: "application/json; charset=utf-8",
+              url: "/items/getModelos/",
+              data : mandando,
+              dataType: "json",
+              success: function (result) {
+                $("#item_modelo").find('option').remove();
+                $("#item_modelo").append($('<option>', {
+                          value: '0',
+                          text:  'Seleccione..'
+                }))
+                  var modelos = result
+                  for (var i = 0; i < modelos.length; i++) {
+
+                    $("#item_modelo").append($('<option>', {
+                              value: modelos[i].id,
+                              text:  modelos[i].nombre
+                    }))
+
+                  }
+              },
+              error: function (){
+                  window.alert("El servidor no responde");
+              }
+          });
+      });
+
+// agrega campos opcionales
+
+    function opciones(category){
+      switch(category){
+        case '1': // refrigerador
+                $('#monitoreo').show();
+                $('#regulador').show();
+                $('#serial').show();
+                $('#mantenimiento').show();
+                $('#num_manten_year').show();
+                $('#modelo').show();
+                //
+                $('#tipo_planta').hide();
+                $('#potencia').hide();
+                $('#transfer_automatica').hide();
+                $('#cargador_bateria').hide();
+                $('#capacidad_refrigeracion').hide();
+                $('#volumen').hide();
+                $('#quantity').hide();
+                $('#num_paquetes').hide();
+                $('#dimensiones').hide();
+
+                $('#compresor').hide();
+                $('#num_compresores').hide();
+                $('#funciona').hide();
+                $('#evaporadores').hide();
+                $('#cantevaporadores').hide();
+
+                 break;
+        case '2': //Congelador
+                 $('#monitoreo').show();
+                 $('#regulador').show();
+                 $('#serial').show();
+                 $('#mantenimiento').show();
+                 $('#num_manten_year').show();
+                 $('#modelo').show();
+                 //
+                 $('#tipo_planta').hide();
+                 $('#potencia').hide();
+                 $('#transfer_automatica').hide();
+                 $('#cargador_bateria').hide();
+                 $('#capacidad_refrigeracion').hide();
+                 $('#volumen').hide();
+                 $('#quantity').hide();
+                 $('#num_paquetes').hide();
+                 $('#compresor').hide();
+                 $('#num_compresores').hide();
+                 $('#funciona').hide();
+                 $('#evaporadores').hide();
+                 $('#dimensiones').hide();
+                 $('#cantevaporadores').hide();
+                  break;
+          case '3': //nevera
+                  $('#monitoreo').show();
+                  $('#regulador').show();
+                  $('#serial').show();
+                  $('#mantenimiento').show();
+                  $('#num_manten_year').show();
+                  $('#modelo').show();
+                  //
+                  $('#tipo_planta').hide();
+                  $('#potencia').hide();
+                  $('#transfer_automatica').hide();
+                  $('#cargador_bateria').hide();
+                  $('#capacidad_refrigeracion').hide();
+                  $('#volumen').hide();
+                  $('#quantity').hide();
+                  $('#num_paquetes').hide();
+                  $('#compresor').hide();
+                  $('#num_compresores').hide();
+                  $('#funciona').hide();
+                  $('#evaporadores').hide();
+                  $('#dimensiones').hide();
+                  $('#cantevaporadores').hide();
+                   break;
+          case '4'://refrigerador/Congelador
+                   $('#monitoreo').show();
+                   $('#regulador').show();
+                   $('#serial').show();
+                   $('#mantenimiento').show();
+                   $('#num_manten_year').show();
+                   $('#modelo').show();
+                   //
+                   $('#tipo_planta').hide();
+                   $('#potencia').hide();
+                   $('#transfer_automatica').hide();
+                   $('#cargador_bateria').hide();
+                   $('#capacidad_refrigeracion').hide();
+                   $('#volumen').hide();
+                   $('#quantity').hide();
+                   $('#num_paquetes').hide();
+                   $('#compresor').hide();
+                   $('#num_compresores').hide();
+                   $('#funciona').hide();
+                   $('#evaporadores').hide();
+                   $('#dimensiones').hide();
+                   $('#cantevaporadores').hide();
+                    break;
+          case '5': //refrigerador vertical
+                    $('#monitoreo').show();
+                    $('#regulador').show();
+                    $('#serial').show();
+                    $('#mantenimiento').show();
+                    $('#num_manten_year').show();
+                    $('#modelo').show();
+                    //
+                    $('#tipo_planta').hide();
+                    $('#potencia').hide();
+                    $('#transfer_automatica').hide();
+                    $('#cargador_bateria').hide();
+                    $('#capacidad_refrigeracion').hide();
+                    $('#volumen').hide();
+                    $('#quantity').hide();
+                    $('#num_paquetes').hide();
+                    $('#compresor').hide();
+                    $('#num_compresores').hide();
+                    $('#funciona').hide();
+                    $('#evaporadores').hide();
+                    $('#dimensiones').hide();
+                    $('#cantevaporadores').hide();
+                     break;
+
+
+        case '6': //termo
+                $('#volumen').show();
+                $('#quantity').show();
+                $('#num_paquetes').show();
+                $('#modelo').show();
+
+                $('#monitoreo').hide();
+                $('#regulador').hide();
+                $('#tipo_planta').hide();
+                $('#potencia').hide();
+                $('#transfer_automatica').hide();
+                $('#cargador_bateria').hide();
+                $('#capacidad_refrigeracion').hide();
+                $('#serial').hide();
+                $('#mantenimiento').hide();
+                $('#num_manten_year').hide();
+                $('#compresor').hide();
+                $('#num_compresores').hide();
+                $('#funciona').hide();
+                $('#evaporadores').hide();
+                $('#cantevaporadores').hide();
+                $('#dimensiones').hide();
+                 break;
+        case '7': //Caja
+                $('#volumen').show();
+                $('#quantity').show();
+                $('#num_paquetes').show();
+                $('#modelo').show();
+
+                $('#monitoreo').hide();
+                $('#regulador').hide();
+                $('#tipo_planta').hide();
+                $('#potencia').hide();
+                $('#transfer_automatica').hide();
+                $('#cargador_bateria').hide();
+                $('#capacidad_refrigeracion').hide();
+                $('#serial').hide();
+                $('#mantenimiento').hide();
+                $('#num_manten_year').hide();
+                $('#compresor').hide();
+                $('#num_compresores').hide();
+                $('#funciona').hide();
+                $('#evaporadores').hide();
+                $('#cantevaporadores').hide();
+                $('#dimensiones').hide();
+                 break;
+        case '8': // aire acondicionado
+                $('#capacidad_refrigeracion').show();
+                $('#mantenimiento').show();
+                $('#num_manten_year').show();
+                $('#modelo').show();
+
+                $('#tipo_planta').hide();
+                $('#potencia').hide();
+                $('#transfer_automatica').hide();
+                $('#cargador_bateria').hide();
+                $('#monitoreo').hide();
+                $('#regulador').hide();
+                $('#volumen').hide();
+                $('#quantity').hide();
+                $('#num_paquetes').hide();
+                $('#compresor').hide();
+                $('#num_compresores').hide();
+                $('#funciona').hide();
+                $('#evaporadores').hide();
+                $('#cantevaporadores').hide();
+                $('#dimensiones').hide();
+                break;
+        case '9': // planta electrica
+                //muestra
+                $('#tipo_planta').show();
+                $('#potencia').show();
+                $('#transfer_automatica').show();
+                $('#cargador_bateria').show();
+                $('#modelo').show();
+                //oculta
+                $('#monitoreo').hide();
+                $('#regulador').hide();
+                $('#capacidad_refrigeracion').hide();
+                $('#volumen').hide();
+                $('#quantity').hide();
+                $('#num_paquetes').hide();
+                $('#compresor').hide();
+                $('#num_compresores').hide();
+                $('#funciona').hide();
+                $('#evaporadores').hide();
+                $('#cantevaporadores').hide();
+                $('#dimensiones').hide();
+                 break;
+        case '11': //cuarto frio
+                $('#dimensiones').show();
+                $('#quantity').show();
+                $('#compresor').show();
+                $('#num_compresores').show();
+                $('#funciona').show();
+                $('#mantenimiento').show();
+                $('#monitoreo').show();
+                $('#evaporadores').show();
+                $('#cantevaporadores').show();
+
+                $('#modelo').hide();
+                $('#tipo_planta').hide();
+                $('#volumen').hide();
+                $('#transfer_automatica').hide();
+                $('#cargador_bateria').hide();
+                $('#num_paquetes').hide();
+                $('#serial').hide();
+                $('#capacidad_refrigeracion').hide();
+                $('#potencia').hide();
+                $('#regulador').hide();
+                $('#modelo').hide();
+                $('#num_manten_year').hide();
+                 break;
+      }
+    }
+
+    $("#item_category").change(function() {
+
+      opciones($(this).val())
+    //let val = $(this).val()
+
+
+    });
+
+
+
+
+    });
+    </script>
+  </body>

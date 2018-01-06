@@ -28,7 +28,7 @@
             <div class="small-box bg-aqua">
               <div class="inner">
                 <h3><%=@items.count%></h3>
-                <p>Total Items</p>
+                <p>Total Items en el Inventario</p>
               </div>
               <div class="icon">
                 <i class="ion ion-search"></i>
@@ -40,8 +40,8 @@
             <!-- small box -->
             <div class="small-box bg-green">
               <div class="inner">
-                <h3><%=@items.sum(:remaining_quantity)%></h3>
-                <p>Items Available</p>
+                <h3>0</h3>
+                <p> -<!--Mantenimientos programados --></p> 
               </div>
               <div class="icon">
                 <i class="ion ion-checkmark"></i>
@@ -67,7 +67,7 @@
             <div class="small-box bg-yellow">
               <div class="inner">
                 <h3><%= @expired.count %></h3>
-                <p>Solicitudes Entregadas</p>
+                <p>Necesidad Equipos</p>
               </div>
               <div class="icon">
                 <i class="ion ion-android-time"></i>
@@ -82,7 +82,7 @@
           <div class="col-md-6">
             <div class="box">
               <div class="box-header with-border">
-                <h3 class="box-title">Solicitudes activas (<%= @active.count %>)</h3>
+                <h3 class="box-title">Necesidades de equipos </h3>
               </div>
               <!-- /.box-header -->
               <div class="box-body">
@@ -91,49 +91,18 @@
                     <tr>
                       <th>Descripción</th>
                       <th>Cantidad</th>
-                    <!--  <th>Return By</th>
-                      <th>Borrowed By</th>-->
-                      <th>
-                        <i class="ion ion-log-in"></i>
-                      </th>
-                      <th>
-                        <i class="ion ion-loop"></i>
-                      </th>
-                      <th>
-                        <i class="ion ion-trash-b"></i>
-                      </th>
+
                     </tr>
                   </thead>
                   <tbody>
                     <% @active.each do |order| %>
                     <tr>
                       <td>
-                        <%= order.item.name %>
+                        <%= Category.find(order.category_id).nombre %>
                       </td>
                       <td><%= order.quantity %></td>
-                    <!--  <% if order.expire_at.strftime("%y:%m:%d") >= Date.today.strftime("%y:%m:%d") %>
-                      <td>
-                        <%= order.expire_at %>
-                      </td>
-                    <% else %>
-                      <td style="color:red;">
-                        <%= order.expire_at %>
-                      </td>
-                      <% end %>
-                      <td>
-                        <%= order.member.name %>
-                      </td> -->
-                      <td>
-                        <%= link_to "", { :controller => :orders, :action => :disable, :id => order.id }, { class: "ion ion-log-in"} %>
-                      </td>
-                      <td>
-                        <%= link_to "", { :controller => :orders, :action => :renew, :id => order.id }, { class: "ion ion-loop"} %>
-                      </td>
-                      <td >
-                        <%= link_to order, method: :delete, data: { confirm: 'Are you sure? If you are trying to return an item it is recommended to use the "return" button.' } do %>
-                        <i class="ion ion-trash-b"></i>
-                        <% end %>
-                      </td>
+
+
                     </tr>
                     <% end %>
                   </tbody>

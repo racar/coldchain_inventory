@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180101234456) do
+ActiveRecord::Schema.define(version: 20180105142839) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -107,6 +107,31 @@ ActiveRecord::Schema.define(version: 20180101234456) do
     t.string   "funciona"
     t.string   "compresor"
     t.string   "num_compresores"
+  end
+
+  create_table "mantenimientos", force: :cascade do |t|
+    t.integer  "man_programados"
+    t.integer  "man_realizados"
+    t.string   "observaciones"
+    t.date     "fecha_firma"
+    t.date     "fecha_vigencia"
+    t.string   "supervisor"
+    t.string   "cargo_supervisor"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.integer  "item_id"
+    t.date     "fecha_man1"
+    t.date     "fecha_man2"
+    t.date     "fecha_man3"
+    t.date     "fecha_man4"
+    t.date     "fecha_man5"
+    t.date     "fecha_man6"
+    t.date     "fecha_man7"
+    t.date     "fecha_man8"
+    t.date     "fecha_man9"
+    t.date     "fecha_man10"
+    t.date     "fecha_man11"
+    t.date     "fecha_man12"
   end
 
   create_table "marcas", force: :cascade do |t|
