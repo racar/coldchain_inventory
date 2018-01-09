@@ -2,10 +2,13 @@
   <div class="login-box">
     <div class="login-logo">
       <a href="">
-        <b>PAI Valle del Cauca</b> Inventario</a>
+        <%= image_tag("logo-valle.png") %><%= image_tag("gob_valle.png") %><br/>
+        <b>Programa Ampliado de Inmunizaciones</b><br/><b> Secretaría de Salud</b> <br/> Inventario Cadena de Frio</a>
+
     </div>
     <!-- /.login-logo -->
     <div class="login-box-body">
+
       <p class="login-box-msg">Ingrese los datos de usuario</p>
 
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>

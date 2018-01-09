@@ -1,6 +1,8 @@
 class MantenimientosController < ApplicationController
   before_action :set_mantenimiento, only: [:show, :edit, :update, :destroy]
 
+  respond_to :html
+
   def new
     @mantenimiento = Mantenimiento.new
   end
@@ -21,6 +23,32 @@ class MantenimientosController < ApplicationController
   end
 
   def destroy
+  end
+
+  def export_excel
+
+    #Items.where('mantenimiento = ?','Si')
+    @mantenimientos = Mantenimientos.all
+    spreadsheet = StringIO.new
+
+    book = Spreadsheet::Workbook.new
+    sheet1 = book.create_worksheet :name => 'SflsGestacional'
+    pos_columna = 0
+
+    sheet1.row(pos_columna).push 'Equipo','Serial','Enero','Febrero','Marzo','Abril',
+                                  'Mayo','Junio','Julio','Agosto','Septiembre','Octubre',
+                                    'Noviembre','Diciembre','Mantenimientos Preventivos Programados',
+                                      'Mantenimientos Preventivos Realizados', 'Observaciones'
+
+    @mantenimientos.each do |mantenimiento|
+      pos_columna += 1
+
+    end
+
+    book.write spreadsheet
+    send_data spreadsheet.string, :filename => "seguimiento_redfrio.xls", :type =>  "application/vnd.ms-excel"
+
+
   end
 
   private

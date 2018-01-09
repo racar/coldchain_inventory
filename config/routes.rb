@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resources :users
   resources :items
   resources :institucions
-  resources :mantenimientos
+
 
   root 'orders#index'
   get 'renew/:id' => 'orders#renew'
@@ -17,5 +17,7 @@ Rails.application.routes.draw do
   post '/items/getMarcas' => 'items#getMarcas', as: :getMarcas
   post '/items/getModelos' => 'items#getModelos', as: :getModelos
 
+  get '/mantenimientos/export_excel' =>'mantenimientos#export_excel', as: :export_excel_gesta
+  resources :mantenimientos
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
