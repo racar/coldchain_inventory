@@ -38,41 +38,71 @@ class MantenimientosController < ApplicationController
     #@mantenimientos = Mantenimiento.all
     @consulta = Item.joins(:mantenimiento).joins(:category).joins(:marca).joins(:modelo)
     spreadsheet = StringIO.new
-
+    format = Spreadsheet::Format.new :color=> :white, :pattern_fg_color => :gray, :pattern => 1
+    bold = Spreadsheet::Format.new :weight => :bold, :text_wrap => true
     book = Spreadsheet::Workbook.new
     sheet1 = book.create_worksheet :name => 'Reporte mantenimiento'
-    pos_columna = 0
-    sheet1.row(pos_columna).push 'NOMBRE DEL DEPARTAMENTO O DISTRITO: ' + Institucion.find(current_user.institucion_id).name
 
-    pos_columna += 1
-    sheet1.row(pos_columna).push 'EQUIPO','SERIAL','ENERO','FEBRERO','MARZO','ABRIL',
+    pos_row = 0
+    sheet1.merge_cells(pos_row,0,pos_row,4)
+    sheet1.merge_cells(pos_row,5,pos_row,7)
+    sheet1.merge_cells(pos_row,8,pos_row,14)
+    sheet1.row(pos_row).push '','','','','','PROCESO','','','GESTIÓN DE PROMOCIÓN,  PREVENCIÓN E INTERVENCIONES INDIVIDUALES Y COLECTIVAS EN SALUD PÚBLICA','','','','','','','Código','GIPF08'
+    sheet1.row(pos_row).default_format = bold
+    pos_row += 1
+    sheet1.merge_cells(pos_row,0,pos_row,4)
+    sheet1.merge_cells(pos_row,5,pos_row,7)
+    sheet1.merge_cells(pos_row,8,pos_row,14)
+    sheet1.row(pos_row).push '','','','','','Formato','','','Seguimiento mantenimiento red de frío a nivel nacional','','','','','','','Versión','1'
+    sheet1.row(pos_row).default_format = bold
+    pos_row += 1
+    sheet1.merge_cells(pos_row,0,pos_row,16)
+    #sheet1.row(pos_row).default_format = format
+    sheet1.row(pos_row).set_format(0, format)
+    sheet1.row(pos_row).push 'NOMBRE DEL DEPARTAMENTO O DISTRITO: ' + Institucion.find(current_user.institucion_id).name
+    pos_row += 1
+    sheet1.row(pos_row).push '','','AÑO:' + Time.now.year.to_s
+    sheet1.merge_cells(pos_row,2,pos_row,13)
+    pos_row += 1
+    sheet1.row(pos_row).push 'EQUIPO','SERIAL','ENERO','FEBRERO','MARZO','ABRIL',
                                   'MAYO','JUNIO','JULIO','AGOSTO','SEPTIEMBRE','OCTUBRE',
                                     'NOVEMBRE','DICIEMBRE','MANTENIMIENTO PREVENTIVOS PROGRAMDOS',
                                       'MANTENIMIENTO PREVENTIVOS REALIZADOS', 'OBSERVACIONES'
 
     @consulta.each do |fila|
-      pos_columna += 1
-      sheet1.row(pos_columna).push  fila.category.nombre + " " + fila.marca.nombre + " " +fila.modelo.nombre,fila.serial,
-      "","","","","","","","","","","","",fila.mantenimiento.man_programados,fila.mantenimiento.man_realizados,fila.mantenimiento.observaciones
+      pos_row += 1
+      sheet1.row(pos_row).push  fila.category.nombre + " " + fila.marca.nombre + " " +fila.modelo.nombre,fila.serial,
+      verify_month(1,fila.mantenimiento),verify_month(2,fila.mantenimiento),
+      verify_month(3,fila.mantenimiento),verify_month(4,fila.mantenimiento),
+      verify_month(5,fila.mantenimiento),verify_month(6,fila.mantenimiento),
+      verify_month(7,fila.mantenimiento),verify_month(8,fila.mantenimiento),
+      verify_month(9,fila.mantenimiento),verify_month(10,fila.mantenimiento),
+      verify_month(11,fila.mantenimiento),verify_month(12,fila.mantenimiento),
+      fila.mantenimiento.man_programados,fila.mantenimiento.man_realizados,fila.mantenimiento.observaciones
 
     end
 
-    pos_columna += 1
-    sheet1.row(pos_columna).push ''
-    pos_columna += 1
-    sheet1.row(pos_columna).push 'DATOS DEL CONTRATO'
-    pos_columna += 1
+    pos_row += 1
+    sheet1.row(pos_row).push ''
+    pos_row += 1
+    sheet1.merge_cells(pos_row,0,pos_row,16)
+    sheet1.row(pos_row).push 'DATOS DEL CONTRATO'
+    sheet1.row(pos_row).set_format(0, format)
+    pos_row += 1
     if (@responsable)
-      sheet1.row(pos_columna).push 'FECHA DE FIRMA DEL CONTRATO:',@responsable.mantenimiento.fecha_firma.to_s
-      pos_columna += 1
-      sheet1.row(pos_columna).push 'VIGENCIA DEL CONTRATO:',@responsable.mantenimiento.fecha_vigencia.to_s
-      pos_columna += 1
-      sheet1.row(pos_columna).push 'NOMBRE DEL SUPERVISOR DEL CONTRATO:',@responsable.mantenimiento.supervisor.to_s
-      pos_columna += 1
-      sheet1.row(pos_columna).push 'CARGO DEL SUPERVISOR DEL CONTRATO:',@responsable.mantenimiento.cargo_supervisor.to_s
-
+      sheet1.row(pos_row).push 'FECHA DE FIRMA DEL CONTRATO:','','','','','',@responsable.mantenimiento.fecha_firma.to_s
+      sheet1.merge_cells(pos_row,0,pos_row,5)
+      pos_row += 1
+      sheet1.row(pos_row).push 'VIGENCIA DEL CONTRATO:','','','','','',@responsable.mantenimiento.fecha_vigencia.to_s
+      sheet1.merge_cells(pos_row,0,pos_row,5)
+      pos_row += 1
+      sheet1.row(pos_row).push 'NOMBRE DEL SUPERVISOR DEL CONTRATO:','','','','','',@responsable.mantenimiento.supervisor.to_s
+      sheet1.merge_cells(pos_row,0,pos_row,5)
+      pos_row += 1
+      sheet1.row(pos_row).push 'CARGO DEL SUPERVISOR DEL CONTRATO:','','','','','',@responsable.mantenimiento.cargo_supervisor.to_s
+      sheet1.merge_cells(pos_row,0,pos_row,5)
     else
-      sheet1.row(pos_columna).push 'INGRESE INFORMACION DE MANTENIMIENTO EN CUARTOS FRIOS O NEVERAS PARA GENERAR'
+      sheet1.row(pos_row).push 'INGRESE INFORMACION DE MANTENIMIENTO EN CUARTOS FRIOS O NEVERAS PARA GENERAR'
     end
 
     book.write spreadsheet
@@ -89,9 +119,16 @@ class MantenimientosController < ApplicationController
     def verify_month(mes,fila)
 
       1.upto(12) do |i|
-        "fila.fecha_man" + i
-      end
+        metodo = "fecha_man" + i.to_s
+        fecha = fila.send(metodo)
+        if fecha
 
+          if fecha.mon === mes
+          return 'X'
+          end
+        end
+      end
+      ''
     end
 
     def set_mantenimiento
