@@ -13,7 +13,7 @@
   <nav class="navbar navbar-static-top">
     <!-- Sidebar toggle button-->
     <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
-      <span class="sr-only">Toggle navigation</span>
+      <i class="fa fa-hospital-o fa-lg"></i>
       <%= Institucion.find(current_user.institucion_id).name%>
     </a>
   </nav>
@@ -45,33 +45,34 @@
       <li>
         <a href="<%= root_url %>">
           <i class="fa fa-home"></i>
-          <span>Home Page</span>
+          <span>Página de Inicio</span>
         </a>
       </li>
       <li>
         <a href="<%= edit_institucion_path(current_user.institucion_id) %>">
-          <i class="fa fa-search"></i>
+          <i class="fa fa-hospital-o"></i>
           <span>Datos Institucion</span>
-        </a>
-      </li>
-      <li>
-        <a href="<%= items_path %>">
-          <i class="fa fa-search"></i>
-          <span>Inventario</span>
-        </a>
-      </li>
-      <li>
-        <a href="<%= past_orders_path %>">
-          <i class="fa fa-history"></i>
-          <span>Necesidad equipos</span>
         </a>
       </li>
       <li>
         <a href=" <%= new_item_path %>">
           <i class="fa fa-plus"></i>
-          <span>Agregar Item</span>
+          <span>Ingresar Inventario</span>
         </a>
       </li>
+      <li>
+        <a href="<%= items_path %>">
+          <i class="fa fa-stethoscope"></i>
+          <span>Inventario</span>
+        </a>
+      </li>
+      <li>
+        <a href="<%= past_orders_path %>">
+          <i class="fa fa-hand-pointer-o"></i>
+          <span>Necesidad equipos</span>
+        </a>
+      </li>
+
     <!--  <li>
         <a href="<%= new_member_path %>">
           <i class="fa fa-user-plus"></i>
