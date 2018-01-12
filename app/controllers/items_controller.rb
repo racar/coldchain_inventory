@@ -23,7 +23,7 @@ class ItemsController < ApplicationController
         @mantenimiento.item_id = @item.id
         @mantenimiento.save
     #  end
-      redirect_to :root, notice: 'Item was successfully created.'
+      redirect_to :root, notice: 'Nuevo Item del inventario Creado.'
     else
       render :new
     end
@@ -31,15 +31,16 @@ class ItemsController < ApplicationController
 
   def update
     if @item.update(item_params)
-      redirect_to :root, notice: 'Item was successfully updated.'
+      redirect_to :root, notice: 'Item del inventario actualizado.'
     else
       render :edit
     end
   end
 
   def destroy
+    @item.mantenimiento.destroy
     @item.destroy
-    redirect_to items_url, notice: 'Item was successfully destroyed.'
+    redirect_to items_url, notice: 'El Item fué eliminado del inventario.'
   end
 
   def getMarcas
@@ -66,6 +67,6 @@ class ItemsController < ApplicationController
   end
 
   def item_params
-    params.require(:item).permit(:name, :category, :marca, :modelo, :serial, :mantenimiento, :num_manten_year, :modelo_id, :marca_id, :regulador, :potencia, :transfer_automatica, :cargador_bateria, :capacidad_refrigeracion, :volumen, :quantity, :num_paquetes, :dimensiones, :funciona, :compresor, :num_compresores, :monitoreo)
+    params.require(:item).permit(:name, :category, :marca, :modelo, :serial, :mantenimiento, :num_manten_year, :modelo_id, :marca_id, :category_id, :regulador, :potencia, :transfer_automatica, :cargador_bateria, :capacidad_refrigeracion, :volumen, :quantity, :num_paquetes, :dimensiones, :funciona, :compresor, :num_compresores, :monitoreo, :tiene_mantenimiento)
   end
 end

@@ -1,2 +1,3 @@
 class Modelo < ApplicationRecord
+  
 end

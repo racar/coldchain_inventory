@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180105142839) do
+ActiveRecord::Schema.define(version: 20180110191443) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -107,6 +107,10 @@ ActiveRecord::Schema.define(version: 20180105142839) do
     t.string   "funciona"
     t.string   "compresor"
     t.string   "num_compresores"
+    t.integer  "category_id"
+    t.integer  "marca_id"
+    t.integer  "modelo_id"
+    t.string   "tiene_mantenimiento"
   end
 
   create_table "mantenimientos", force: :cascade do |t|

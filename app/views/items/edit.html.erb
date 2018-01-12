@@ -45,8 +45,8 @@
               <div class="box-body">
                 <div class="form-group">
                   <label>Categoría</label>
-                <!--  <%= f.select(:category, [["Refrigerador/Congelador","Refrigerador/Congelador"], ["Termo","Termo"], ["Caja","Caja"], ["Aire acondicionado","Aire"], ["Termometro","Termometro"]], {}, { :class => 'form-control' })%> -->
-                  <%= f.collection_select(:category, Category.all, :id, :nombre, {:prompt => "Seleccione..."},{:class => 'form-control'}) %>
+
+                  <%= f.collection_select(:category_id, Category.all, :id, :nombre, {:prompt => "Seleccione..."},{:class => 'form-control'}) %>
                 </div>
                 <div id="tipo_planta" class="form-group">
                   <label>Tipo planta</label>
@@ -61,18 +61,14 @@
 
                 <div class="form-group">
                   <label>Marca <div id="evaporadores"> de Evaporadores </div></label>
-                  <!-- <%= f.text_field :marca, class: "form-control", placeholder: "Ingrese Marca", required: true  %> -->
 
-                  <%= f.collection_select(:marca, Marca.where("category_id = ?", f.object.category), :id, :nombre, {:prompt => "Seleccione..."},{:class => 'form-control'}) %>
-                <!--  <%= f.select(:marca,[["Seleccione","0"]],{},{ :class => 'form-control' }) %> -->
+                  <%= f.collection_select(:marca_id, Marca.where("category_id = ?", f.object.category_id), :id, :nombre, {:prompt => "Seleccione..."},{:class => 'form-control'}) %>
                 </div>
 
                 <div id="modelo" class="form-group">
                   <label>Modelo</label>
-                  <!--<%= f.text_field :modelo, class: "form-control", placeholder: "Ingrese Modelo", required: true  %> -->
-                  <%= f.collection_select(:modelo, Modelo.where("marca_id = ?", f.object.marca), :id, :nombre, {:prompt => "Seleccione..."},{:class => 'form-control'}) %>
-                  <!--<%= f.select(:modelo,[["Seleccione","0"]],{},{ :class => 'form-control' }) %> -->
-                </div>
+                    <%= f.collection_select(:modelo_id, Modelo.where("marca_id = ?", f.object.marca_id), :id, :nombre, {:prompt => "Seleccione..."},{:class => 'form-control'}) %>
+                  </div>
                 <div id ="volumen" class="form-group">
                   <label>Volumen en Litros</label>
                   <%= f.text_field :volumen, class: "form-control", placeholder: "Ingrese Volumen"%>
@@ -105,7 +101,7 @@
                 </div>
                 <div id ="capacidad_refrigeracion" class="form-group">
                   <label>Capacidad de refrigeracion [BTH/h]</label>
-                  <%= f.text_field :capacidad_refrigeracion, class: "form-control", placeholder: "Ingrese numero mantenimientos"%>
+                  <%= f.text_field :capacidad_refrigeracion, class: "form-control", placeholder: "Ingrese numero"%>
                   <div class ="callout callout-info">
                   Es la rata de extracción de calor del equipo y se mide en BTH/h, este dato se encuentra en una placa del equipo por lo general ubicada en un costado del mismo.
                  </div>
@@ -122,7 +118,7 @@
                 <div id="mantenimiento" class="form-group">
                   <label>¿Cuenta con Mantenimiento?</label>
 
-                  <%= f.select(:mantenimiento, [["Si","Si"], ["No","No"]], {}, { :class => 'form-control' })%>
+                  <%= f.select(:tiene_mantenimiento, [["Si","Si"], ["No","No"]], {}, { :class => 'form-control' })%>
                 </div>
                 <div id="num_manten_year" class="form-group">
                   <label>Numero Mantenimientos al año</label>
@@ -136,7 +132,7 @@
                 <div id="monitoreo" class="form-group">
                   <label>Sistema de monitoreo</label>
 
-                  <%= f.select(:monitoreo, [["TDMM","TDMM"], ["AUTO","AUTO"], ["NO","NO"]], {}, { :class => 'form-control' })%> *
+                  <%= f.select(:monitoreo, [["TDMM","TDMM"], ["AUTO","AUTO"], ["NO","NO"]], {}, { :class => 'form-control' })%>
                   <div class ="callout callout-info">
                     <strong> Sistema de Monitoreo.</strong><br/>
                     -TDMM monitoreo manual con ayuda del termómetro digital de máximas y mínimas.<br/>
@@ -197,11 +193,11 @@
     <script>
     jQuery(function($) {
 
-      opciones($("#item_category").val())
+      opciones($("#item_category_id").val())
       //trae marcas asociadas a categorias
-      $("#item_category").change(function() {
+      $("#item_category_id").change(function() {
 
-        mandando = JSON.stringify({categoria:$("#item_category").val()})
+        mandando = JSON.stringify({categoria:$("#item_category_id").val()})
 
         $.ajax({
               type: "POST",// GET in place of POST
@@ -233,9 +229,9 @@
 
 
 // trae modelos asociados a marcas
-      $("#item_marca").change(function() {
+      $("#item_marca_id").change(function() {
 
-        mandando = JSON.stringify({categoria:$("#item_category").val(),marca:$("#item_marca").val()})
+        mandando = JSON.stringify({categoria:$("#item_category_id").val(),marca:$("#item_marca_id").val()})
 
         $.ajax({
               type: "POST",// GET in place of POST
@@ -244,15 +240,15 @@
               data : mandando,
               dataType: "json",
               success: function (result) {
-                $("#item_modelo").find('option').remove();
-                $("#item_modelo").append($('<option>', {
+                $("#item_modelo_id").find('option').remove();
+                $("#item_modelo_id").append($('<option>', {
                           value: '0',
                           text:  'Seleccione..'
                 }))
                   var modelos = result
                   for (var i = 0; i < modelos.length; i++) {
 
-                    $("#item_modelo").append($('<option>', {
+                    $("#item_modelo_id").append($('<option>', {
                               value: modelos[i].id,
                               text:  modelos[i].nombre
                     }))
@@ -504,7 +500,7 @@
       }
     }
 
-    $("#item_category").change(function() {
+    $("#item_category_id").change(function() {
 
       opciones($(this).val())
     //let val = $(this).val()

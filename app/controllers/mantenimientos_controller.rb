@@ -26,23 +26,53 @@ class MantenimientosController < ApplicationController
   end
 
   def export_excel
+    @responsable
+    category = Category.where('nombre = ?','Cuarto Frio').first
+    @responsable = query_responsable(category)
+    if !@responsable
+      category = Category.where('nombre = ?','Refrigerador').first
+      @responsable = query_responsable(category)
+    end
 
     #Items.where('mantenimiento = ?','Si')
-    @mantenimientos = Mantenimientos.all
+    #@mantenimientos = Mantenimiento.all
+    @consulta = Item.joins(:mantenimiento).joins(:category).joins(:marca).joins(:modelo)
     spreadsheet = StringIO.new
 
     book = Spreadsheet::Workbook.new
-    sheet1 = book.create_worksheet :name => 'SflsGestacional'
+    sheet1 = book.create_worksheet :name => 'Reporte mantenimiento'
     pos_columna = 0
+    sheet1.row(pos_columna).push 'NOMBRE DEL DEPARTAMENTO O DISTRITO: ' + Institucion.find(current_user.institucion_id).name
 
-    sheet1.row(pos_columna).push 'Equipo','Serial','Enero','Febrero','Marzo','Abril',
-                                  'Mayo','Junio','Julio','Agosto','Septiembre','Octubre',
-                                    'Noviembre','Diciembre','Mantenimientos Preventivos Programados',
-                                      'Mantenimientos Preventivos Realizados', 'Observaciones'
+    pos_columna += 1
+    sheet1.row(pos_columna).push 'EQUIPO','SERIAL','ENERO','FEBRERO','MARZO','ABRIL',
+                                  'MAYO','JUNIO','JULIO','AGOSTO','SEPTIEMBRE','OCTUBRE',
+                                    'NOVEMBRE','DICIEMBRE','MANTENIMIENTO PREVENTIVOS PROGRAMDOS',
+                                      'MANTENIMIENTO PREVENTIVOS REALIZADOS', 'OBSERVACIONES'
 
-    @mantenimientos.each do |mantenimiento|
+    @consulta.each do |fila|
       pos_columna += 1
+      sheet1.row(pos_columna).push  fila.category.nombre + " " + fila.marca.nombre + " " +fila.modelo.nombre,fila.serial,
+      "","","","","","","","","","","","",fila.mantenimiento.man_programados,fila.mantenimiento.man_realizados,fila.mantenimiento.observaciones
 
+    end
+
+    pos_columna += 1
+    sheet1.row(pos_columna).push ''
+    pos_columna += 1
+    sheet1.row(pos_columna).push 'DATOS DEL CONTRATO'
+    pos_columna += 1
+    if (@responsable)
+      sheet1.row(pos_columna).push 'FECHA DE FIRMA DEL CONTRATO:',@responsable.mantenimiento.fecha_firma.to_s
+      pos_columna += 1
+      sheet1.row(pos_columna).push 'VIGENCIA DEL CONTRATO:',@responsable.mantenimiento.fecha_vigencia.to_s
+      pos_columna += 1
+      sheet1.row(pos_columna).push 'NOMBRE DEL SUPERVISOR DEL CONTRATO:',@responsable.mantenimiento.supervisor.to_s
+      pos_columna += 1
+      sheet1.row(pos_columna).push 'CARGO DEL SUPERVISOR DEL CONTRATO:',@responsable.mantenimiento.cargo_supervisor.to_s
+
+    else
+      sheet1.row(pos_columna).push 'INGRESE INFORMACION DE MANTENIMIENTO EN CUARTOS FRIOS O NEVERAS PARA GENERAR'
     end
 
     book.write spreadsheet
@@ -52,6 +82,18 @@ class MantenimientosController < ApplicationController
   end
 
   private
+    def query_responsable(category)
+      @responsable = Item.joins(:mantenimiento).where('institucion_id = ? and category_id = ?',current_user.institucion_id, category.id).first
+    end
+
+    def verify_month(mes,fila)
+
+      1.upto(12) do |i|
+        "fila.fecha_man" + i
+      end
+
+    end
+
     def set_mantenimiento
       @mantenimiento = Mantenimiento.find(params[:id])
     end

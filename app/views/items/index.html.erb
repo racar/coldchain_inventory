@@ -46,14 +46,14 @@
                     <% @items.each do |item| %>
                     <tr>
                       <!-- <td><%= item.id %></td> -->
-                      <td><%= Category.find(item.category).nombre %></td>
-                      <td><%= Marca.find(item.marca).nombre %></td>
-                      <td><%= Modelo.find(item.modelo).nombre %></td>
+                      <td><%= Category.find(item.category_id).nombre %></td>
+                      <td><%= Marca.find(item.marca_id).nombre %></td>
+                      <td><%= Modelo.find(item.modelo_id).nombre %></td>
                       <td><%= item.serial %></td>
 
                       <td><%= link_to 'Editar', edit_item_path(item) %></td>
                       <td><%= link_to 'Eliminar', item, method: :delete, data: { confirm: '¿Esta seguro de borrar este item?' } %></td>
-                      <td><% if item.mantenimiento === 'Si' %>
+                      <td><% if item.tiene_mantenimiento === 'Si' %>
                         <% mant = Mantenimiento.where('item_id = ?',item.id).first%>
                         <%= link_to 'Mantenimientos', edit_mantenimiento_path(mant) %>
                           <% end %>

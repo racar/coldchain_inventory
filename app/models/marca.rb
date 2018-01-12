@@ -1,2 +1,3 @@
 class Marca < ApplicationRecord
+  
 end

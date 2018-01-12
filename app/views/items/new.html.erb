@@ -45,8 +45,7 @@
               <div class="box-body">
                 <div class="form-group">
                   <label>Categoría</label>
-                <!--  <%= f.select(:category, [["Refrigerador/Congelador","Refrigerador/Congelador"], ["Termo","Termo"], ["Caja","Caja"], ["Aire acondicionado","Aire"], ["Termometro","Termometro"]], {}, { :class => 'form-control' })%> -->
-                  <%= f.collection_select(:category, Category.all, :id, :nombre, {:prompt => "Seleccione..."},{:class => 'form-control'}) %>
+                  <%= f.collection_select(:category_id, Category.all, :id, :nombre, {:prompt => "Seleccione..."},{:class => 'form-control'}) %>
                 </div>
                 <div id="tipo_planta" class="form-group">
                   <label>Tipo planta</label>
@@ -61,14 +60,12 @@
 
                 <div class="form-group">
                   <label>Marca <div id="evaporadores"> de Evaporadores </div></label>
-                  <!-- <%= f.text_field :marca, class: "form-control", placeholder: "Ingrese Marca", required: true  %> -->
-                  <%= f.select(:marca,[["Seleccione","0"]],{},{ :class => 'form-control' }) %>
+                  <%= f.select(:marca_id,[["Seleccione","0"]],{},{ :class => 'form-control' }) %>
                 </div>
 
                 <div id="modelo" class="form-group">
                   <label>Modelo</label>
-                  <!--<%= f.text_field :modelo, class: "form-control", placeholder: "Ingrese Modelo", required: true  %> -->
-                  <%= f.select(:modelo,[["Seleccione","0"]],{},{ :class => 'form-control' }) %>
+                  <%= f.select(:modelo_id,[["Seleccione","0"]],{},{ :class => 'form-control' }) %>
                 </div>
                 <div id ="volumen" class="form-group">
                   <label>Volumen en Litros</label>
@@ -121,7 +118,7 @@
                 <div id="mantenimiento" class="form-group">
                   <label>¿Cuenta con Mantenimiento?</label>
 
-                  <%= f.select(:mantenimiento, [["No","No"],["Si","Si"]], {}, { :class => 'form-control' })%>
+                  <%= f.select(:tiene_mantenimiento, [["No","No"],["Si","Si"]], {}, { :class => 'form-control' })%>
                 </div>
                 <div id="num_manten_year" class="form-group">
                   <label>Numero Mantenimientos al año</label>
@@ -218,9 +215,9 @@
       $('#evaporadores').hide();
       $('#cantevaporadores').hide();
       //trae marcas asociadas a categorias
-      $("#item_category").change(function() {
+      $("#item_category_id").change(function() {
 
-        mandando = JSON.stringify({categoria:$("#item_category").val()})
+        mandando = JSON.stringify({categoria:$("#item_category_id").val()})
 
         $.ajax({
               type: "POST",// GET in place of POST
@@ -229,15 +226,15 @@
               data : mandando,
               dataType: "json",
               success: function (result) {
-                $("#item_marca").find('option').remove();
-                $("#item_marca").append($('<option>', {
+                $("#item_marca_id").find('option').remove();
+                $("#item_marca_id").append($('<option>', {
                           value: '0',
                           text:  'Seleccione..'
                 }))
                   var marcas = result
                   for (var i = 0; i < marcas.length; i++) {
 
-                    $("#item_marca").append($('<option>', {
+                    $("#item_marca_id").append($('<option>', {
                               value: marcas[i].id,
                               text:  marcas[i].nombre
                     }))
@@ -252,9 +249,9 @@
 
 
 // trae modelos asociados a marcas
-      $("#item_marca").change(function() {
+      $("#item_marca_id").change(function() {
 
-        mandando = JSON.stringify({categoria:$("#item_category").val(),marca:$("#item_marca").val()})
+        mandando = JSON.stringify({categoria:$("#item_category_id").val(),marca:$("#item_marca_id").val()})
 
         $.ajax({
               type: "POST",// GET in place of POST
@@ -263,15 +260,15 @@
               data : mandando,
               dataType: "json",
               success: function (result) {
-                $("#item_modelo").find('option').remove();
-                $("#item_modelo").append($('<option>', {
+                $("#item_modelo_id").find('option').remove();
+                $("#item_modelo_id").append($('<option>', {
                           value: '0',
                           text:  'Seleccione..'
                 }))
                   var modelos = result
                   for (var i = 0; i < modelos.length; i++) {
 
-                    $("#item_modelo").append($('<option>', {
+                    $("#item_modelo_id").append($('<option>', {
                               value: modelos[i].id,
                               text:  modelos[i].nombre
                     }))
@@ -285,7 +282,7 @@
       });
 
 // agrega campos opcionales
-    $("#item_category").change(function() {
+    $("#item_category_id").change(function() {
     let val = $(this).val();
         switch(val){
           case '1': // refrigerador
