@@ -47,8 +47,20 @@
                     <tr>
                       <!-- <td><%= item.id %></td> -->
                       <td><%= Category.find(item.category_id).nombre %></td>
-                      <td><%= Marca.find(item.marca_id).nombre %></td>
-                      <td><%= Modelo.find(item.modelo_id).nombre %></td>
+                      <td><%= if(item.marca_id == 0)
+                                item.marca_digitada
+                              elsif (item.marca_id == -1)
+                                ''
+                              else
+                                Marca.find(item.marca_id).nombre
+                              end %></td>
+                      <td><%= if (item.modelo_id == 0)
+                                item.modelo_digitado
+                              elsif (item.modelo_id == -1)
+                                ''
+                              else
+                              Modelo.find(item.modelo_id).nombre
+                            end%></td>
                       <td><%= item.serial %></td>
 
                       <td><%= link_to 'Editar', edit_item_path(item) %></td>

@@ -58,14 +58,23 @@
                   <%= f.text_field :dimensiones, class: "form-control", placeholder: "Ingrese Dimensiones" %>
                 </div>
 
-                <div class="form-group">
+                <div id="marca" class="form-group">
                   <label>Marca <div id="evaporadores"> de Evaporadores </div></label>
                   <%= f.select(:marca_id,[["Seleccione","0"]],{},{ :class => 'form-control' }) %>
+                </div>
+
+                <div id="marca_digitada" class="form-group">
+                  <label>Digite Marca </label>
+                  <%= f.text_field :marca_digitada, :class => 'form-control'  %>
                 </div>
 
                 <div id="modelo" class="form-group">
                   <label>Modelo</label>
                   <%= f.select(:modelo_id,[["Seleccione","0"]],{},{ :class => 'form-control' }) %>
+                </div>
+                <div id="modelo_digitado" class="form-group">
+                  <label>Digite Modelo </label>
+                  <%= f.text_field :modelo_digitado, :class => 'form-control'  %>
                 </div>
                 <div id ="volumen" class="form-group">
                   <label>Volumen en Litros</label>
@@ -214,6 +223,9 @@
       $('#funciona').hide();
       $('#evaporadores').hide();
       $('#cantevaporadores').hide();
+      $('#marca_digitada').hide();
+      $('#modelo_digitado').hide();
+
       //trae marcas asociadas a categorias
       $("#item_category_id").change(function() {
 
@@ -228,8 +240,8 @@
               success: function (result) {
                 $("#item_marca_id").find('option').remove();
                 $("#item_marca_id").append($('<option>', {
-                          value: '0',
-                          text:  'Seleccione..'
+                          value: '-1',
+                          text:  'Seleccione...'
                 }))
                   var marcas = result
                   for (var i = 0; i < marcas.length; i++) {
@@ -240,6 +252,7 @@
                     }))
 
                   }
+
               },
               error: function (){
                   window.alert("El servidor no responde");
@@ -250,6 +263,18 @@
 
 // trae modelos asociados a marcas
       $("#item_marca_id").change(function() {
+        //$("#item_marca_digitada").prop('disabled', true);
+ //alert($("#item_marca_id option:selected").text())
+          if($("#item_marca_id option:selected").text() == 'Otro'){
+            $('#marca_digitada').show();
+            $('#modelo_digitado').show();
+            $('#modelo').hide();
+          }else{
+            $('#marca_digitada').hide();
+            $('#modelo_digitado').hide();
+            $('#modelo').show();
+          }
+
 
         mandando = JSON.stringify({categoria:$("#item_category_id").val(),marca:$("#item_marca_id").val()})
 
@@ -262,9 +287,10 @@
               success: function (result) {
                 $("#item_modelo_id").find('option').remove();
                 $("#item_modelo_id").append($('<option>', {
-                          value: '0',
-                          text:  'Seleccione..'
+                          value: '-1',
+                          text:  'Seleccione...'
                 }))
+
                   var modelos = result
                   for (var i = 0; i < modelos.length; i++) {
 
@@ -274,11 +300,26 @@
                     }))
 
                   }
+
               },
               error: function (){
                   window.alert("El servidor no responde");
               }
           });
+      });
+
+
+      $("#item_modelo_id").change(function() {
+        //$("#item_marca_digitada").prop('disabled', true);
+
+          //if($("#item_modelo_id").val() == '0')
+          if($("#item_modelo_id option:selected").text() == 'Otro'){
+            $('#modelo_digitado').show();
+
+          }else{
+            $('#modelo_digitado').hide();
+
+          }
       });
 
 // agrega campos opcionales

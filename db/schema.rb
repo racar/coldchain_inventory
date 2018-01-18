@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180110191443) do
+ActiveRecord::Schema.define(version: 20180116190633) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -111,6 +111,8 @@ ActiveRecord::Schema.define(version: 20180110191443) do
     t.integer  "marca_id"
     t.integer  "modelo_id"
     t.string   "tiene_mantenimiento"
+    t.string   "marca_digitada"
+    t.string   "modelo_digitado"
   end
 
   create_table "mantenimientos", force: :cascade do |t|
